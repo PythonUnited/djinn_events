@@ -1,0 +1,31 @@
+{% extends "pgcontent/base_view.html" %}
+
+{% load auth_tags %}
+{% load contentaction_tags %}
+
+{% block content %}
+
+<section class="intro">
+  {{ object.text|default:""|safe }}
+</section>
+
+<section class="details">
+  <dl>
+    <dt>Start datum</dt><dd>{{ object.start_date }}</dd>
+    {% if object.end_date %}
+    <dt>Einddatum</dt><dd>{{ object.end_date }}</dd>
+    {% endif %}
+  </dl>
+</section>
+
+{% endblock %}
+
+{% block right-pane %}
+
+<div class="action-bar">
+  {% ifpermission object request.user contenttypes.change_contenttype %}
+  {% edit_content object 'Bewerken' '' %}
+  {% endifpermission %}
+</div>
+
+{% endblock %}

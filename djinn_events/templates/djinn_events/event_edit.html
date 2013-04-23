@@ -1,0 +1,44 @@
+{% extends "pgcontent/base_edit.html" %}
+
+{% load search_tags %}
+{% load contentblock_tags %}
+{% load contentaction_tags %}
+{% load pgprofile_tags %}
+{% load auth_tags %}
+{% load form_tags %}
+{% load i18n %}
+
+
+{% block left-pane %}
+
+<header>
+  <h1>
+  {% if object.is_initiated %}
+  Nieuw event
+  {% else %}
+  Event bewerken
+  {% endif %}
+  </h1>
+</header>
+
+{% contentitem_stats object %}
+
+{% control form.title %}
+
+{% control form.start_date %}
+
+{% control form.end_date %}
+
+{% control form.text %}
+
+<div class="btn-group form-controls">
+  {% submit_button 'Opslaan' %}
+  {% cancel_button %}
+  {% if not object.is_initiated %}
+  {% ifpermission object request.user contenttypes.delete_contenttype %}
+  {% delete_content object 'Verwijder deze storing' %}
+  {% endifpermission %}
+  {% endif %}
+</div>
+  
+{% endblock %}

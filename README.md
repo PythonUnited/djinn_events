@@ -1,4 +1,4 @@
 djinn_events
-============
+===================
 
-Event content type for Djinn
+Djinn module for events

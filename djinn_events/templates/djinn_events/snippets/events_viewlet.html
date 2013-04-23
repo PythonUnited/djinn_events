@@ -1,0 +1,51 @@
+{% load i18n %}
+{% load humanize %}
+
+<section id="events" class="editmode">
+  
+  <header>
+    <h2>{% trans Events %}</h2>
+
+    <span class="controls">
+      <a class="add-inline"
+         data-pu_callback="djinn.hide_events_alert"
+         target="#eventlist"
+         data-pu_targetbehavior="prepend"
+         href="{%  url djinn_events_add_event_json %}">
+        <i class="icon-plus"></i>
+      </a>
+    </span>    
+  </header>
+
+  {% if view.events|length > 0 %}
+
+  <ul id="eventlist">
+    {% for event in view.events %}
+    <li class="event">
+      <a data-target="#MyModal"
+         href="{% url djinn_events_view_event event.id %}?modal=1"
+         data-toggle="modal">
+        {{ event.title_slice }}
+      </a>
+      
+      <time>{{ event.start_date }} {% if event.end_date %}- {{ event.end_date }}{% endif %}</time>
+      
+      {{ event.text|safe }}
+      
+    </li>
+    {% endfor %}
+  </ul>
+
+  {% if view.show_more %}
+  <a href="{% url haystack_search %}?content_type=event">{% trans "All events" %}</a>
+  {% endif %}
+
+  {% else %}
+  
+  <div class="alert alert-info" id="events-alert">
+    Er zijn geen evenementen.
+  </div>
+  
+  {% endif %}
+  
+</section>

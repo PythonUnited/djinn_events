@@ -1,0 +1,10 @@
+{% load humanize %}
+
+<li class="announcement">
+  <a data-target="#MyModal"
+     href="{% url djinn_announcements_view_announcement object.id %}"
+     data-toggle="modal">
+    {{ object.title_slice }}
+  </a>
+  {{ object.created|naturalday:_("MONTH_DAY_FORMAT") }}
+</li>

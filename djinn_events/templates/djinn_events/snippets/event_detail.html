@@ -1,0 +1,18 @@
+{% extends 'layout-modal.html' %}
+
+{% block header %}Event{% endblock %}
+
+{% block body %}
+
+<header>
+  <h2>{{ object.title }}</h2>
+</header>
+
+{{ object.text|safe|wordwrap:80 }}
+
+<dl>
+  <dt>Geplaatst op:</dt><dd>{{ object.created }}</dd>
+  <dt>Auteur:</dt><dd>{{ object.creator.get_profile }}</dd>
+</dl>
+
+{% endblock %}
