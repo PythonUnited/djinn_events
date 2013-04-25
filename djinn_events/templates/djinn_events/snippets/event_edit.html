@@ -1,0 +1,40 @@
+{% load i18n %}
+
+<h3>{{ form.labels.header }}</h3>
+
+<form method="POST" action="{{ action }}">
+
+  <label for="id_title">{{ form.title.label }}</label>
+  {{ form.title }}
+
+  <section>
+    <label>Van</label>
+    {{ form.start_date }}  {{ form.start_time }}
+
+    <label>Tot</label>
+    {{ form.end_date }} {{ form.end_time }}    
+
+    <div>
+      <input type="checkbox" name="djinn_events_full_day">
+      <label>{% trans "Full day" %}</label>
+    </div>
+  </section>
+
+  <label for="id_location">{{ form.location.label }}</label>
+  {{ form.location }}
+
+  <label for="id_text">{{ form.text.label }}</label>
+  {{ form.text }}
+
+  <label for="id_link">{{ form.link.label }}</label>
+  {{ form.link }}
+
+  <div class="btn-group">
+    <button type="submit" class="btn btn-primary">
+      {{ form.labels.submit|default:'Opslaan' }}
+    </button>
+    <button type="cancel" class="btn cancel">
+      {{ form.labels.cancel|default:'Annuleren' }}
+    </button>
+  </div>
+</form> 

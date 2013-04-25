@@ -11,10 +11,11 @@ class Event(ChangeableBaseContent, RelatableMixin):
 
     title = models.CharField(_('Title'), max_length=200)
     text = models.TextField(_('Text'))
-    start_date = models.DateTimeField(_('Start date'), default=datetime.now)
-    end_date = models.DateTimeField(_('(End date'), null=True,
-                                    blank=True, default=None)
-    full_day = models.BooleanField(_('Full day'))
+    start_date = models.DateField(_('Start date'))
+    start_time = models.TimeField(_('Start time'))
+    end_date = models.DateField(_('End date'), null=True,
+                                blank=True, default=None)
+    end_time = models.TimeField(_('End time'))
     location = models.CharField(_('Location'), max_length=50)
     link = models.URLField(_('Link'))
 

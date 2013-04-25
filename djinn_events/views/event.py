@@ -10,6 +10,7 @@ class EventCreateView(JSONCreateView):
     model = Event
     form_class = EventForm
     success_template_name = "djinn_events/snippets/event.html"
+    template_name = "djinn_events/snippets/event_edit.html"
 
     def get_initial(self):
 

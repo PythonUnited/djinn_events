@@ -4,17 +4,18 @@
 <section id="events" class="editmode">
   
   <header>
-    <h2>{% trans Events %}</h2>
+    <h2>{% trans "Events" %}
 
-    <span class="controls">
-      <a class="add-inline"
-         data-pu_callback="djinn.hide_events_alert"
-         target="#eventlist"
-         data-pu_targetbehavior="prepend"
-         href="{%  url djinn_events_add_event_json %}">
-        <i class="icon-plus"></i>
-      </a>
-    </span>    
+      <span class="controls">
+        <a class="add-inline"
+           data-pu_callback="djinn.hide_events_alert"
+           target="#eventlist"
+           data-pu_targetbehavior="prepend"
+           href="{%  url djinn_events_add_event_json %}">
+          <i class="icon-plus"></i>
+        </a>
+      </span>    
+    </h2>
   </header>
 
   {% if view.events|length > 0 %}
