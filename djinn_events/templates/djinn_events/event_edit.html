@@ -1,6 +1,5 @@
-{% extends "pgcontent/base_edit.html" %}
+{% extends "djinn_contenttypes/base_edit.html" %}
 
-{% load search_tags %}
 {% load contentblock_tags %}
 {% load contentaction_tags %}
 {% load pgprofile_tags %}
@@ -13,32 +12,52 @@
 
 <header>
   <h1>
-  {% if object.is_initiated %}
-  Nieuw event
+  {% if object %}
+  {% trans "Edit event" %}
   {% else %}
-  Event bewerken
+  {% trans "New event" %}
   {% endif %}
   </h1>
 </header>
 
+{% if object %}
 {% contentitem_stats object %}
+{% endif %}
 
-{% control form.title %}
+<label for="id_title">{{ form.title.label }}</label>
+{{ form.title }}
 
-{% control form.start_date %}
+<section>
+  <label>Van</label>
+  {{ form.start_date }}  {{ form.start_time }}
+  
+  <label>Tot</label>
+  {{ form.end_date }} {{ form.end_time }}    
+  
+  <label class="checkbox">
+    <input type="checkbox" name="djinn_events_full_day">
+    {% trans "Full day" %}
+  </label>
+</section>
 
-{% control form.end_date %}
+<label for="id_location">{{ form.location.label }}</label>
+{{ form.location }}
 
-{% control form.text %}
+<label for="id_text">{{ form.text.label }}</label>
+{{ form.text }}
+
+<label for="id_link">{{ form.link.label }}</label>
+{{ form.link }}
+
 
 <div class="btn-group form-controls">
   {% submit_button 'Opslaan' %}
-  {% cancel_button %}
-  {% if not object.is_initiated %}
+  <a class="btn" href="/">{% trans "Cancel" %}</a>
+  {% if object %}
   {% ifpermission object request.user contenttypes.delete_contenttype %}
-  {% delete_content object 'Verwijder deze storing' %}
+  {% delete_content object 'Verwijder dit event' %}
   {% endifpermission %}
   {% endif %}
 </div>
-  
+
 {% endblock %}

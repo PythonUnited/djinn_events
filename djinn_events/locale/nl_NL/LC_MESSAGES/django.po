@@ -1,0 +1,82 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: djinn_events\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-04-25 10:01+0200\n"
+"PO-Revision-Date: 2013-04-25 10:01+0100\n"
+"Last-Translator: Duco Dokter <dokter@w20e.com>\n"
+"Language-Team: LANGUAGE <info@pythonunited.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Dutch\n"
+"X-Poedit-Country: NETHERLANDS\n"
+
+#: forms/event.py:8
+#: models/event.py:14
+msgid "Start date"
+msgstr "Begindatum"
+
+#: forms/event.py:15
+#: models/event.py:15
+msgid "Start time"
+msgstr "Begintijd"
+
+#: forms/event.py:23
+#: models/event.py:16
+msgid "End date"
+msgstr "Einddatum"
+
+#: forms/event.py:31
+#: models/event.py:18
+msgid "End time"
+msgstr "Eindtijd"
+
+#: forms/event.py:40
+#: models/event.py:12
+msgid "Title"
+msgstr "Titel"
+
+#: forms/event.py:43
+msgid "Description"
+msgstr "Beschrijving"
+
+#: models/event.py:13
+msgid "Text"
+msgstr "Tekst"
+
+#: models/event.py:19
+msgid "Location"
+msgstr "Locatie"
+
+#: models/event.py:20
+msgid "Link"
+msgstr "Link"
+
+#: models/event.py:49
+#: models/event.py:50
+msgid "Event"
+msgstr "Evenement"
+
+#: models/event.py:54
+msgid "events"
+msgstr "evenementen"
+
+#: templates/djinn_events/snippets/event.html:9
+msgid "MONTH_DAY_FORMAT"
+msgstr ""
+
+#: templates/djinn_events/snippets/events_viewlet.html:7
+msgid "Events"
+msgstr "Evenementen"
+
+#: templates/djinn_events/snippets/events_viewlet.html:40
+msgid "All events"
+msgstr "Alle evenementen"
+

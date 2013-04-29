@@ -7,11 +7,7 @@
     <h2>{% trans "Events" %}
 
       <span class="controls">
-        <a class="add-inline"
-           data-pu_callback="djinn.hide_events_alert"
-           target="#eventlist"
-           data-pu_targetbehavior="prepend"
-           href="{%  url djinn_events_add_event_json %}">
+        <a href="{% url djinn_events_add_event %}">
           <i class="icon-plus"></i>
         </a>
       </span>    

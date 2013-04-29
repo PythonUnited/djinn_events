@@ -4,6 +4,20 @@
 
 <form method="POST" action="{{ action }}">
 
+  {% if form.errors %}
+  <div class="alert alert-error">
+    <strong>Het formulier bevat de volgende fouten:</strong>
+    <ul class="basic-list">
+      
+      {% for field in form %}
+      {% if field.errors %}
+      <li><strong>{{ field.label }}</strong>: {{ field.errors }}</li>
+      {% endif %}
+      {% endfor %}      
+    </ul>
+  </div>
+  {% endif %}
+
   <label for="id_title">{{ form.title.label }}</label>
   {{ form.title }}
 
@@ -14,10 +28,10 @@
     <label>Tot</label>
     {{ form.end_date }} {{ form.end_time }}    
 
-    <div>
+    <label class="checkbox">
       <input type="checkbox" name="djinn_events_full_day">
-      <label>{% trans "Full day" %}</label>
-    </div>
+      {% trans "Full day" %}
+    </label>
   </section>
 
   <label for="id_location">{{ form.location.label }}</label>
@@ -29,7 +43,7 @@
   <label for="id_link">{{ form.link.label }}</label>
   {{ form.link }}
 
-  <div class="btn-group">
+  <div class="btn-group controls">
     <button type="submit" class="btn btn-primary">
       {{ form.labels.submit|default:'Opslaan' }}
     </button>
