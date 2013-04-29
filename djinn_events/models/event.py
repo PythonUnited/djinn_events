@@ -35,6 +35,29 @@ class Event(BaseContent):
             return "%s..." % self.title[:50]
         return self.title
 
+    @property
+    def has_end(self):
+
+        return self.end_date
+
+    @property
+    def start(self):
+
+        if self.start_time:
+            return datetime.combine(self.start_date, 
+                                    self.start_time)
+        else:
+            return self.start_date
+
+    @property
+    def end(self):
+
+        if self.end_time:
+            return datetime.combine(self.end_date, 
+                                    self.end_time)
+        else:
+            return self.end_date
+
     class Meta:
         app_label = 'djinn_events'
         ordering = ('-created', )

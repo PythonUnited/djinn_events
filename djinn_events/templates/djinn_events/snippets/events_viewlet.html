@@ -25,7 +25,22 @@
         {{ event.title_slice }}
       </a>
       
-      <time>{{ event.start_date }} {% if event.end_date %}- {{ event.end_date }}{% endif %}</time>
+      <time>
+      {% if event.start_time %}
+      {{ event.start|date:"DATETIME_FORMAT" }}
+      {% else %}
+      {{ event.start|date:"DATE_FORMAT" }}
+      {% endif %}
+
+      {% if event.end_date %}
+      -
+      {% if event.end_time %}
+      {{ event.end|date:"DATETIME_FORMAT" }}
+      {% else %}
+      {{ event.end|date:"DATE_FORMAT" }}
+      {% endif %}
+      {% endif %}
+      </time>
       
       {{ event.text|safe }}
       

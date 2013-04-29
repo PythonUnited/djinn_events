@@ -9,28 +9,7 @@
   {{ object.text|default:""|safe }}
 </section>
 
-<section class="details">
-  <dl>
-    <dt>{% trans "Start" %}</dt>
-    <dd>
-      {% if view.has_start_time %}
-      {{ view.start|date:"DATETIME_FORMAT" }}
-      {% else %}
-      {{ view.start|date:"DATE_FORMAT" }}
-      {% endif %}
-    </dd>
-    {% if view.has_end %}
-    <dt>{% trans "End" %}</dt>
-    <dd>
-      {% if view.has_end_time %}
-      {{ view.end|date:"DATETIME_FORMAT" }}
-      {% else %}
-      {{ view.end|date:"DATE_FORMAT" }}
-      {% endif %}
-    </dd>
-    {% endif %}
-  </dl>
-</section>
+{% include "djinn_events/snippets/event_detail_block.html" %}
 
 {% endblock %}
 

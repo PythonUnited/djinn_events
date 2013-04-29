@@ -1,0 +1,24 @@
+{% load i18n %}
+
+<section class="details">
+  <dl>
+    <dt>{% trans "Start" %}</dt>
+    <dd>
+      {% if object.start_time %}
+      {{ object.start|date:"DATETIME_FORMAT" }}
+      {% else %}
+      {{ object.start|date:"DATE_FORMAT" }}
+      {% endif %}
+    </dd>
+    {% if object.has_end %}
+    <dt>{% trans "End" %}</dt>
+    <dd>
+      {% if object.end_time %}
+      {{ object.end|date:"DATETIME_FORMAT" }}
+      {% else %}
+      {{ object.end|date:"DATE_FORMAT" }}
+      {% endif %}
+    </dd>
+    {% endif %}
+  </dl>
+</section>
