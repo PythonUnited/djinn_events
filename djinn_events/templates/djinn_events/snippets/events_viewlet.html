@@ -20,7 +20,7 @@
     {% for event in view.events %}
     <li class="event">
       <a data-target="#MyModal"
-         href="{% url djinn_events_view_event event.id %}?modal=1"
+         href="{% url djinn_events_view_event event.id event.slug %}?modal=1"
          data-toggle="modal">
         {{ event.title_slice }}
       </a>
@@ -34,7 +34,7 @@
   </ul>
 
   {% if view.show_more %}
-  <a href="{% url haystack_search %}?content_type=event">{% trans "All events" %}</a>
+  <a href="{% url haystack_search %}?content_type=event&restrict_content_types=event">{% trans "All events" %}</a>
   {% endif %}
 
   {% else %}

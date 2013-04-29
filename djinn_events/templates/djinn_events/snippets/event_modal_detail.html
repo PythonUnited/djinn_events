@@ -1,9 +1,12 @@
-{% extends "pgcontent/base_view.html" %}
+{% extends "layout-modal.html" %}
 
-{% load auth_tags i18n %}
-{% load contentaction_tags %}
+{% load i18n %}
 
-{% block content %}
+{% block header %}
+{{ object.title }}
+{% endblock %}
+
+{% block body %}
 
 <section class="intro">
   {{ object.text|default:""|safe }}
@@ -19,7 +22,7 @@
       {{ view.start|date:"DATE_FORMAT" }}
       {% endif %}
     </dd>
-    {% if view.has_end %}
+    {% if object.has_end %}
     <dt>{% trans "End" %}</dt>
     <dd>
       {% if view.has_end_time %}
@@ -31,15 +34,5 @@
     {% endif %}
   </dl>
 </section>
-
-{% endblock %}
-
-{% block right-pane %}
-
-<div class="action-bar">
-  {% ifpermission object request.user contenttypes.change_contenttype %}
-  {% edit_content object 'Bewerken' '' %}
-  {% endifpermission %}
-</div>
 
 {% endblock %}

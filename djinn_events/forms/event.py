@@ -17,9 +17,8 @@ class EventForm(BaseContentForm):
     
     start_time = forms.TimeField(label=_("Start time"),
                                  required=False,
-                                 widget=forms.DateTimeInput(
-            attrs={'class': 'time', 'size': 5},
-            format="%H:%M"
+                                 widget=forms.TextInput(
+            attrs={'class': 'time', 'size': 5}
             )
                                      )
 
@@ -33,9 +32,8 @@ class EventForm(BaseContentForm):
 
     end_time = forms.TimeField(label=_("End time"),
                                required=False,
-                               widget=forms.DateTimeInput(
-            attrs={'class': 'time', 'cols': 5},
-            format="%H:%M"
+                               widget=forms.TextInput(
+            attrs={'class': 'time', 'cols': 5}
             )
                                      )
 
