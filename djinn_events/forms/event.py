@@ -3,10 +3,10 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from djinn_forms.widgets.link import LinkWidget
 from djinn_events.models.event import Event
-from djinn_contenttypes.forms.base import BaseContentForm
+from djinn_contenttypes.forms.base import BaseForm
 
 
-class EventForm(BaseContentForm):
+class EventForm(BaseForm):
 
     start_date = forms.DateField(label=_("Start date"),
                                  widget=forms.DateTimeInput(
@@ -50,6 +50,7 @@ class EventForm(BaseContentForm):
                            )
 
     link = forms.CharField(label=_("Link"),
+                           required=False,
                            max_length=200,
                            widget=LinkWidget())
 
@@ -67,6 +68,3 @@ class EventForm(BaseContentForm):
 
     class Meta:
         model = Event
-        xxfields = ('title', 'text', 'start_date',
-                  'start_time',
-                  'end_date', 'end_time', 'location', 'link')

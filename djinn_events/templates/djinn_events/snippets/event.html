@@ -1,10 +1,47 @@
-{% load humanize %}
+{% load i18n humanize djinn_contenttypes auth_tags %}
 
-<li class="announcement">
+
+<li class="event">
   <a data-target="#MyModal"
-     href="{% url djinn_announcements_view_announcement object.id %}"
+     href="{% url djinn_events_view_event event.id event.slug %}?modal=1"
      data-toggle="modal">
-    {{ object.title_slice }}
+    {{ event.title|abbreviate:"50" }}
   </a>
-  {{ object.created|naturalday:_("MONTH_DAY_FORMAT") }}
+      
+  <time>
+    {% if event.start_time %}
+    {{ event.start|date:"DATETIME_FORMAT" }}
+    {% else %}
+    {{ event.start|date:"DATE_FORMAT" }}
+    {% endif %}
+    
+    {% if event.end_date %}
+    -
+    {% if event.end_time %}
+    {{ event.end|date:"DATETIME_FORMAT" }}
+    {% else %}
+    {{ event.end|date:"DATE_FORMAT" }}
+    {% endif %}
+    {% endif %}
+  </time>
+      
+  {{ event.text|safe }}
+      
+  {% ifpermission object request.user contenttypes.change_contenttype %}
+  <span class="controls">
+    <a class="edit-inline"
+       data-toggle="tooltip"
+       title="{% trans 'Edit event' %}"
+       href="{%  url djinn_events_edit_event object.id %}">
+      <i class="icon-pencil"></i>
+    </a>
+    <a class="rm-inline"
+       data-toggle="tooltip"
+       title="{% trans 'Delete event' %}"
+       href="{%  url djinn_events_delete_event object.id %}">
+      <i class="icon-remove"></i>
+    </a>
+  </span>
+  {% endifpermission %}
+
 </li>

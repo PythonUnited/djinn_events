@@ -18,11 +18,11 @@ _urlpatterns = patterns(
         CreateView.as_view(model=Event, form_class=EventForm),
         name="djinn_events_add_event"),
 
-    url(r"^edit/eventupdate/(?P<pk>[\d]+)/?$",
+    url(r"^edit/event/(?P<pk>[\d]+)/?$",
         UpdateView.as_view(model=Event, form_class=EventForm),
         name="djinn_events_edit_event"),
 
-    url(r"^delete/eventupdate/(?P<pk>[\d]+)/?$",
+    url(r"^delete/event/(?P<pk>[\d]+)/?$",
         DeleteView.as_view(model=Event),
         name="djinn_events_delete_event"),
 

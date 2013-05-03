@@ -46,7 +46,7 @@ $(document).ready(function() {
       });    
 
     // Naive implementation that does string wise comparison
-    $(document).on("change", "#id_start_date", function(e) {
+    $(document).on("change", ".event #id_start_date", function(e) {
         if (!$("#id_end_date").val()) {
           $("#id_end_date").val($("#id_start_date").val());
         } else if ($("#id_end_date").val() < $("#id_start_date").val()) {
@@ -55,7 +55,7 @@ $(document).ready(function() {
       });
 
     // Naive implementation that does string wise comparison
-    $(document).on("change", "#id_start_time", function(e) {
+    $(document).on("change", ".event #id_start_time", function(e) {
         if ($("#id_end_time").val().substr(0, 3) <= $("#id_start_time").val().substr(0, 3)) {
           $("#id_end_time").val(djinn.events.calc_end_time($("#id_start_time").val()));
         }

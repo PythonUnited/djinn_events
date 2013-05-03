@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: djinn_events\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-25 10:01+0200\n"
-"PO-Revision-Date: 2013-04-25 10:01+0100\n"
+"POT-Creation-Date: 2013-05-02 09:43+0200\n"
+"PO-Revision-Date: 2013-05-02 09:44+0100\n"
 "Last-Translator: Duco Dokter <dokter@w20e.com>\n"
 "Language-Team: LANGUAGE <info@pythonunited.com>\n"
 "Language: \n"
@@ -18,65 +18,104 @@ msgstr ""
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-Country: NETHERLANDS\n"
 
-#: forms/event.py:8
-#: models/event.py:14
+#: forms/event.py:11
+#: models/event.py:12
 msgid "Start date"
 msgstr "Begindatum"
 
-#: forms/event.py:15
-#: models/event.py:15
+#: forms/event.py:18
+#: models/event.py:13
 msgid "Start time"
 msgstr "Begintijd"
 
-#: forms/event.py:23
-#: models/event.py:16
+#: forms/event.py:25
+#: models/event.py:14
 msgid "End date"
 msgstr "Einddatum"
 
-#: forms/event.py:31
-#: models/event.py:18
+#: forms/event.py:33
+#: models/event.py:16
 msgid "End time"
 msgstr "Eindtijd"
 
 #: forms/event.py:40
-#: models/event.py:12
 msgid "Title"
 msgstr "Titel"
 
 #: forms/event.py:43
-msgid "Description"
-msgstr "Beschrijving"
-
-#: models/event.py:13
-msgid "Text"
-msgstr "Tekst"
-
-#: models/event.py:19
+#: models/event.py:17
 msgid "Location"
 msgstr "Locatie"
 
-#: models/event.py:20
+#: forms/event.py:46
+msgid "Description"
+msgstr "Beschrijving"
+
+#: forms/event.py:52
+#: models/event.py:18
 msgid "Link"
 msgstr "Link"
 
-#: models/event.py:49
-#: models/event.py:50
+#: forms/event.py:64
+msgid "Save event"
+msgstr "Gebeurtenis opslaan"
+
+#: forms/event.py:65
+#: templates/djinn_events/event_edit.html:55
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: forms/event.py:66
+#: templates/djinn_events/snippets/events_viewlet.html:12
+msgid "Add event"
+msgstr "Gebeurtenis toevoegen"
+
+#: models/event.py:11
+msgid "Text"
+msgstr "Tekst"
+
+#: models/event.py:69
 msgid "Event"
 msgstr "Evenement"
 
-#: models/event.py:54
+#: models/event.py:72
 msgid "events"
 msgstr "evenementen"
+
+#: templates/djinn_events/event_edit.html:16
+msgid "Edit event"
+msgstr "Gebeurtenis wijzigen"
+
+#: templates/djinn_events/event_edit.html:18
+msgid "New event"
+msgstr "Nieuwe gebeurtenis"
+
+#: templates/djinn_events/event_edit.html:39
+#: templates/djinn_events/snippets/event_edit.html:33
+msgid "Full day"
+msgstr "Hele dag"
 
 #: templates/djinn_events/snippets/event.html:9
 msgid "MONTH_DAY_FORMAT"
 msgstr ""
 
+#: templates/djinn_events/snippets/event_detail_block.html:5
+msgid "Start"
+msgstr "Aanvang"
+
+#: templates/djinn_events/snippets/event_detail_block.html:14
+msgid "End"
+msgstr "Einde"
+
 #: templates/djinn_events/snippets/events_viewlet.html:7
 msgid "Events"
 msgstr "Evenementen"
 
-#: templates/djinn_events/snippets/events_viewlet.html:40
+#: templates/djinn_events/snippets/events_viewlet.html:55
 msgid "All events"
 msgstr "Alle evenementen"
+
+#: templates/djinn_events/snippets/events_viewlet.html:61
+msgid "No events"
+msgstr "Geen gebeurtenissen"
 
