@@ -3,7 +3,7 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from djinn_forms.widgets.link import LinkWidget
 from djinn_events.models.event import Event
-from djinn_contenttypes.forms.base import BaseForm
+from djinn_contenttypes.forms.base import BaseForm, BaseAddForm
 
 
 class EventForm(BaseForm):
@@ -41,12 +41,13 @@ class EventForm(BaseForm):
                             max_length=50)
 
     location = forms.CharField(label=_("Location"),
+                               required=False,
                                max_length=50)
 
     text = forms.CharField(label=_("Description"),
                            max_length=500,
                            widget=forms.Textarea(
-                attrs={'data-maxchars': 150, 'rows': '3'})
+                attrs={'data-maxchars': 500, 'rows': '3'})
                            )
 
     link = forms.CharField(label=_("Link"),
@@ -65,6 +66,16 @@ class EventForm(BaseForm):
         return {'submit': _("Save event"), 
                 'cancel': _("Cancel"),
                 'header': _("Add event")}
+
+
+class EventEditForm(EventForm):
+
+    class Meta:
+        model = Event
+        exclude = ["creator"]
+
+
+class EventAddForm(BaseAddForm, EventForm):
 
     class Meta:
         model = Event

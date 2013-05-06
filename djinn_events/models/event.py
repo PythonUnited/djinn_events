@@ -29,7 +29,8 @@ class Event(BaseContent):
     @property
     def has_end(self):
 
-        return self.end_date
+        return self.end_time or \
+            (self.end_date and self.end_date != self.start_date)
 
     @property
     def start(self):
@@ -58,6 +59,6 @@ CTRegistry.register("event",
                     {"class": Event,
                      "app": "djinn_events",
                      "label": _("Event"),
-                     "add_permission": "djinn_event.add_event",
+                     "add_permission": "djinn_events.add_event",
                      "filter_label": "",
                      "name_plural": _("events")})

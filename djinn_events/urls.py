@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import patterns, url, include
 from views.eventviewlet import EventViewlet
 from models.event import Event
-from forms.event import EventForm
+from forms.event import EventEditForm, EventAddForm
 from views.event import EventView
 from djinn_contenttypes.views.base import CreateView, UpdateView, DeleteView
 
@@ -15,11 +15,11 @@ _urlpatterns = patterns(
         name="djinn_events_view_event"),
 
     url(r"^add/event/?$",
-        CreateView.as_view(model=Event, form_class=EventForm),
+        CreateView.as_view(model=Event, form_class=EventAddForm),
         name="djinn_events_add_event"),
 
     url(r"^edit/event/(?P<pk>[\d]+)/?$",
-        UpdateView.as_view(model=Event, form_class=EventForm),
+        UpdateView.as_view(model=Event, form_class=EventEditForm),
         name="djinn_events_edit_event"),
 
     url(r"^delete/event/(?P<pk>[\d]+)/?$",

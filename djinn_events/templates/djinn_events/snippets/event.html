@@ -29,14 +29,12 @@
       
   {% ifpermission object request.user contenttypes.change_contenttype %}
   <span class="controls">
-    <a class="edit-inline"
-       data-toggle="tooltip"
+    <a data-toggle="tooltip"
        title="{% trans 'Edit event' %}"
        href="{%  url djinn_events_edit_event object.id %}">
       <i class="icon-pencil"></i>
     </a>
-    <a class="rm-inline"
-       data-toggle="tooltip"
+    <a data-toggle="tooltip"
        title="{% trans 'Delete event' %}"
        href="{%  url djinn_events_delete_event object.id %}">
       <i class="icon-remove"></i>

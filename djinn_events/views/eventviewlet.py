@@ -1,3 +1,4 @@
+from datetime import date
 from django.views.generic import TemplateView
 from djinn_events.models.event import Event
 from djinn_events.settings import SHOW_N_EVENTS
@@ -24,7 +25,14 @@ class EventViewlet(TemplateView):
 
     def events(self, limit=5):
 
-        return Event.objects.all()[:limit]
+        today = date.today()
+
+        end_date_later_than_now = Event.objects.filter(end_date__gte=today)
+        no_end_date = Event.objects.filter(end_date__isnull=True,
+                                           start_date__gte=today)
+
+        return (end_date_later_than_now | no_end_date).order_by(
+            "-start_date")[:limit]
 
     @property
     def show_more(self, limit=SHOW_N_EVENTS):

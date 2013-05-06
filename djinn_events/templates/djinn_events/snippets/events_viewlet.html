@@ -1,10 +1,11 @@
-{% load i18n humanize %}
+{% load i18n humanize auth_tags %}
 
 <section id="events" class="editmode">
   
   <header>
     <h2>{% trans "Events" %}
 
+      {% ifpermission "" request.user djinn_events.add_event %}
       <span class="controls">
         <a href="{% url djinn_events_add_event %}"
            data-toggle="tooltip"
@@ -12,7 +13,8 @@
            >
           <i class="icon-plus"></i>
         </a>
-      </span>    
+      </span>
+      {% endifpermission %}
     </h2>
   </header>
 
