@@ -18,15 +18,6 @@ class Event(BaseContent):
     link = models.CharField(_('Link'), max_length=200)
 
     @property
-    def slug(self):
-        
-        return slugify(self.title)
-
-    def __unicode__(self):
-
-        return self.title
-
-    @property
     def has_end(self):
 
         return self.end_time or \

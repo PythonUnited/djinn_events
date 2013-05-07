@@ -3,7 +3,7 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from djinn_forms.widgets.link import LinkWidget
 from djinn_events.models.event import Event
-from djinn_contenttypes.forms.base import BaseForm, BaseAddForm
+from djinn_contenttypes.forms.base import BaseForm
 
 
 class EventForm(BaseForm):
@@ -29,7 +29,7 @@ class EventForm(BaseForm):
             format="%d-%m-%Y"
             )
                                )
-
+    
     end_time = forms.TimeField(label=_("End time"),
                                required=False,
                                widget=forms.TextInput(
@@ -67,15 +67,5 @@ class EventForm(BaseForm):
                 'cancel': _("Cancel"),
                 'header': _("Add event")}
 
-
-class EventEditForm(EventForm):
-
-    class Meta:
-        model = Event
-        exclude = ["creator"]
-
-
-class EventAddForm(BaseAddForm, EventForm):
-
-    class Meta:
+    class Meta(BaseForm.Meta):
         model = Event
