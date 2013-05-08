@@ -1,7 +1,6 @@
 from datetime import datetime
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from django.template.defaultfilters import slugify
 from djinn_contenttypes.registry import CTRegistry
 from djinn_contenttypes.models.base import BaseContent
 
