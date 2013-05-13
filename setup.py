@@ -27,14 +27,14 @@ setup(name='djinn_events',
       author='PythonUnited',
       author_email='info@pythonunited.com',
       license='beer-ware',
-      url='https://github.com/PythonUnited/djinn-events',
+      url='https://github.com/PythonUnited/djinn_events',
       keywords='Djinn Core',
       packages=find_packages(),
       include_package_data=True,
       zip_safe=False,
       install_requires = requires,
       tests_require= requires,
-      test_suite="djinn-events",
+      test_suite="djinn_events",
       entry_points = """\
       [djinn.app]
       urls=djinn_events:get_urls

@@ -1,6 +1,8 @@
 from django.conf.urls.defaults import patterns, url, include
 from views.eventviewlet import EventViewlet
 from models.event import Event
+from forms.event import EventForm
+from views.event import EventView
 from djinn_contenttypes.views.utils import generate_model_urls
 
 
@@ -13,10 +15,9 @@ _urlpatterns = patterns(
         name="djinn_events"),
     )
 
-
-_modelpatterns = generate_model_urls(Event)
+_eventpatterns = generate_model_urls(Event)
 
 urlpatterns = patterns('',
     (r'^events/', include(_urlpatterns)),
-    (r'^events/', include(_modelpatterns)),
+    (r'^events/', include(_eventpatterns)),
 )
