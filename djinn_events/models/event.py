@@ -50,5 +50,5 @@ CTRegistry.register("event",
                      "app": "djinn_events",
                      "label": _("Event"),
                      "add_permission": "djinn_events.add_event",
-                     "filter_label": "",
+                     "filter_label": _("Event"),
                      "name_plural": _("events")})

@@ -1,6 +1,7 @@
 {% load i18n djinn_contenttypes %}
 
 <section class="details">
+
   <dl>
     <dt>{% trans "Start" %}</dt>
     <dd>
@@ -20,9 +21,17 @@
       {% endif %}
     </dd>
     {% endif %}
+    {% if object.link %}
     <dt>Link</dt>
     <dd>
       <a href="{{ view.link }}">{{ view.link_title|abbreviate:"50" }}</a>
     </dd>
+    {% endif %}
+    {% if object.location %}
+    <dt>Location</dt>
+    <dd>
+      {{ object.location }}
+    </dd>
+    {% endif %}    
   </dl>
 </section>

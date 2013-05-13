@@ -1,7 +1,7 @@
 {% load i18n humanize djinn_contenttypes auth_tags %}
 
 
-<li class="event">
+<li class="event editable">
   <a data-target="#MyModal"
      href="{% url djinn_events_view_event event.id event.slug %}?modal=1"
      data-toggle="modal">
@@ -17,15 +17,16 @@
     
     {% if event.end_date %}
     -
-    {% if event.end_time %}
-    {{ event.end|date:"DATETIME_FORMAT" }}
-    {% else %}
-    {{ event.end|date:"DATE_FORMAT" }}
+    {% if object.start_date != object.end_date %}
+    {{ object.end|date:"DATETIME_FORMAT" }}
+    {% elif object.end_time %}
+    {{ object.end|date:"TIME_FORMAT" }}      
     {% endif %}
     {% endif %}
   </time>
       
-  {{ event.text|safe }}
+  {{ event.text|safe|abbreviate:"50" }}
+  {{ event.location }}
       
   {% ifpermission object request.user contenttypes.change_contenttype %}
   <span class="controls">
@@ -35,6 +36,7 @@
       <i class="icon-pencil"></i>
     </a>
     <a data-toggle="tooltip"
+       class="rm-inline"
        title="{% trans 'Delete event' %}"
        href="{%  url djinn_events_delete_event object.id %}">
       <i class="icon-remove"></i>
