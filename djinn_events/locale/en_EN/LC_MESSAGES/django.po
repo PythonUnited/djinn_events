@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-02 09:43+0200\n"
+"POT-Creation-Date: 2013-05-14 14:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: forms/event.py:11 models/event.py:12
+#: forms/event.py:11 models/event.py:11
 msgid "Start date"
 msgstr ""
 
-#: forms/event.py:18 models/event.py:13
+#: forms/event.py:18 models/event.py:12
 msgid "Start time"
 msgstr ""
 
-#: forms/event.py:25 models/event.py:14
+#: forms/event.py:25 models/event.py:13
 msgid "End date"
 msgstr ""
 
-#: forms/event.py:33 models/event.py:16
+#: forms/event.py:33 models/event.py:15
 msgid "End time"
 msgstr ""
 
@@ -37,75 +37,75 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: forms/event.py:43 models/event.py:17
+#: forms/event.py:43 models/event.py:16
 msgid "Location"
 msgstr ""
 
-#: forms/event.py:46
+#: forms/event.py:47
 msgid "Description"
 msgstr ""
 
-#: forms/event.py:52 models/event.py:18
+#: forms/event.py:53 models/event.py:17
 msgid "Link"
 msgstr ""
 
-#: forms/event.py:64
+#: forms/event.py:66
 msgid "Save event"
 msgstr ""
 
-#: forms/event.py:65 templates/djinn_events/event_edit.html:55
+#: forms/event.py:67
 msgid "Cancel"
 msgstr ""
 
-#: forms/event.py:66 templates/djinn_events/snippets/events_viewlet.html:12
+#: forms/event.py:68 templates/djinn_events/snippets/events_viewlet.html:12
 msgid "Add event"
 msgstr ""
 
-#: models/event.py:11
+#: models/event.py:10
 msgid "Text"
 msgstr ""
 
-#: models/event.py:69
+#: models/event.py:51 models/event.py:53
 msgid "Event"
 msgstr ""
 
-#: models/event.py:72
+#: models/event.py:54
 msgid "events"
 msgstr ""
 
-#: templates/djinn_events/event_edit.html:16
-msgid "Edit event"
-msgstr ""
-
-#: templates/djinn_events/event_edit.html:18
-msgid "New event"
-msgstr ""
-
-#: templates/djinn_events/event_edit.html:39
-#: templates/djinn_events/snippets/event_edit.html:33
-msgid "Full day"
-msgstr ""
-
-#: templates/djinn_events/snippets/event.html:9
-msgid "MONTH_DAY_FORMAT"
-msgstr ""
-
-#: templates/djinn_events/snippets/event_detail_block.html:5
+#: templates/djinn_events/event_add.html:11
+#: templates/djinn_events/event_edit.html:11
+#: templates/djinn_events/snippets/event_detail_block.html:6
 msgid "Start"
 msgstr ""
 
-#: templates/djinn_events/snippets/event_detail_block.html:14
+#: templates/djinn_events/event_add.html:14
+#: templates/djinn_events/event_edit.html:14
+#: templates/djinn_events/snippets/event_detail_block.html:15
 msgid "End"
 msgstr ""
 
-#: templates/djinn_events/snippets/events_viewlet.html:7
+#: templates/djinn_events/event_add.html:19
+#: templates/djinn_events/event_edit.html:19
+msgid "Full day"
+msgstr ""
+
+#: templates/djinn_events/snippets/event.html:34
+msgid "Edit event"
+msgstr ""
+
+#: templates/djinn_events/snippets/event.html:40
+msgid "Delete event"
+msgstr ""
+
+#: templates/djinn_events/snippets/events_viewlet.html:6
 msgid "Events"
 msgstr ""
 
-#: templates/djinn_events/snippets/events_viewlet.html:55
+#: templates/djinn_events/snippets/events_viewlet.html:30
 msgid "All events"
 msgstr ""
 
-#: templates/djinn_events/snippets/events_viewlet.html:61
+#: templates/djinn_events/snippets/events_viewlet.html:36
 msgid "No events"
 msgstr ""
