@@ -25,9 +25,10 @@
     {% endif %}
   </time>
       
-  {{ event.text|safe|abbreviate:"50" }}
-  {{ event.location }}
+  <div class="location">{{ event.location }}</div>
       
+  <p>{{ event.text|safe|abbreviate:"50" }}</p>
+
   {% ifpermission object request.user contenttypes.change_contenttype %}
   <span class="controls">
     <a data-toggle="tooltip"

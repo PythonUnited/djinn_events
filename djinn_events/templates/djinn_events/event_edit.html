@@ -1,11 +1,10 @@
 {% extends "djinn_contenttypes/base_edit.html" %}
 
-{% load i18n %}
+{% load i18n bootstrap %}
 
 {% block formfields %}
 
-<label for="id_title">{{ form.title.label }}</label>
-{{ form.title }}
+{{ form.title|bootstrap }}
 
 <fieldset>
   <label>{% trans "Start" %}</label>
@@ -20,13 +19,10 @@
   </label>
 </fieldset>
 
-<label for="id_location">{{ form.location.label }}</label>
-{{ form.location }}
+{{ form.location|bootstrap }}
 
-<label for="id_text">{{ form.text.label }}</label>
-{{ form.text }}
+{{ form.text|bootstrap }}
 
-<label for="id_link">{{ form.link.label }}</label>
-{{ form.link }}
+{{ form.link|bootstrap }}
 
 {% endblock %}

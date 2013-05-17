@@ -22,13 +22,13 @@
     </dd>
     {% endif %}
     {% if object.link %}
-    <dt>Link</dt>
+    <dt>{% trans "Link" %}</dt>
     <dd>
       <a href="{{ view.link }}">{{ view.link_title|abbreviate:"50" }}</a>
     </dd>
     {% endif %}
     {% if object.location %}
-    <dt>Location</dt>
+    <dt>{% trans "Location" %}</dt>
     <dd>
       {{ object.location }}
     </dd>
