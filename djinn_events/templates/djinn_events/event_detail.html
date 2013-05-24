@@ -2,6 +2,12 @@
 
 {% load auth_tags i18n contentaction_tags %}
 
+{% block header %}
+<header>
+  <h1>{{ object.title }}</h1>
+</header>
+{% endblock %}
+
 {% block content %}
 
 <section class="intro">

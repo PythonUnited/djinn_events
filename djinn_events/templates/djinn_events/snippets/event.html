@@ -15,7 +15,7 @@
     {{ object.start|date:"DATE_FORMAT" }}
     {% endif %}
     
-    {% if object.end_date %}
+    {% if object.has_end %}
     -
     {% if object.start_date != object.end_date %}
     {% if object.end_time %}

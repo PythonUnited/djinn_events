@@ -1,4 +1,4 @@
-{% load i18n djinn_contenttypes %}
+{% load i18n djinn_contenttypes humanize %}
 
 <section class="details">
 
@@ -11,27 +11,35 @@
       {{ object.start|date:"DATE_FORMAT" }}
       {% endif %}
     </dd>
+
     {% if object.has_end %}
     <dt>{% trans "End" %}</dt>
     <dd>
       {% if object.start_date != object.end_date %}
-      {{ object.end|date:"DATETIME_FORMAT" }}
+        {% if object.end_time %}
+          {{ object.end|date:"DATETIME_FORMAT" }}
+        {% else %}
+          {{ object.end|date:"DATE_FORMAT" }}
+        {% endif %}
       {% elif object.end_time %}
-      {{ object.end|date:"TIME_FORMAT" }}      
+        {{ object.end|date:"TIME_FORMAT" }}      
       {% endif %}
     </dd>
     {% endif %}
-    {% if object.link %}
-    <dt>{% trans "Link" %}</dt>
-    <dd>
-      <a href="{{ view.link }}">{{ view.link_title|abbreviate:"50" }}</a>
-    </dd>
-    {% endif %}
+
     {% if object.location %}
     <dt>{% trans "Location" %}</dt>
     <dd>
       {{ object.location }}
     </dd>
     {% endif %}    
+
+    {% if object.link %}
+    <dt>{% trans "Link" %}</dt>
+    <dd>
+      <a href="{{ view.link }}">{{ view.link_title|abbreviate:"50" }}</a>
+    </dd>
+    {% endif %}
+
   </dl>
 </section>
