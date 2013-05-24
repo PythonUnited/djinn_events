@@ -3,31 +3,35 @@
 
 <li class="event editable">
   <a data-target="#MyModal"
-     href="{% url djinn_events_view_event event.id event.slug %}?modal=1"
+     href="{% url djinn_events_view_event object.id object.slug %}?modal=1"
      data-toggle="modal">
-    {{ event.title|abbreviate:"50" }}
+    {{ object.title|abbreviate:"50" }}
   </a>
       
   <time>
-    {% if event.start_time %}
-    {{ event.start|date:"DATETIME_FORMAT" }}
+    {% if object.start_time %}
+    {{ object.start|date:"DATETIME_FORMAT" }}
     {% else %}
-    {{ event.start|date:"DATE_FORMAT" }}
+    {{ object.start|date:"DATE_FORMAT" }}
     {% endif %}
     
-    {% if event.end_date %}
+    {% if object.end_date %}
     -
     {% if object.start_date != object.end_date %}
+    {% if object.end_time %}
     {{ object.end|date:"DATETIME_FORMAT" }}
+    {% else %}
+    {{ object.end|date:"DATE_FORMAT" }}
+    {% endif %}
     {% elif object.end_time %}
     {{ object.end|date:"TIME_FORMAT" }}      
     {% endif %}
     {% endif %}
   </time>
       
-  <div class="location">{{ event.location }}</div>
+  <div class="location">{{ object.location }}</div>
       
-  <p>{{ event.text|safe|abbreviate:"100" }}</p>
+  <p>{{ object.text|safe|abbreviate:"100" }}</p>
 
   {% ifpermission object request.user contenttypes.change_contenttype %}
   <span class="controls">
