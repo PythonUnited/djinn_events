@@ -39,6 +39,5 @@ setup(name='djinn_events',
       [djinn.app]
       urls=djinn_events:get_urls
       js=djinn_events:get_js
-      css=djinn_events:get_css
       """
       )
