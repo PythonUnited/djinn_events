@@ -38,9 +38,11 @@ class EventForm(BaseForm):
                                      )
 
     title = forms.CharField(label=_("Title"),
+                            help_text=_("50 characters max"),
                             max_length=50)
 
     location = forms.CharField(label=_("Location"),
+                               help_text=_("50 characters max"),
                                required=False,
                                max_length=50)
 

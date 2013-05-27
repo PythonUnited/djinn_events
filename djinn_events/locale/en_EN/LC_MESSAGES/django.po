@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-16 11:46+0200\n"
+"POT-Creation-Date: 2013-05-27 16:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,27 +37,33 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: forms/event.py:43 models/event.py:16
+#: forms/event.py:41 forms/event.py:45
+msgid "50 characters max"
+msgstr ""
+
+#: forms/event.py:44 models/event.py:16
+#: templates/djinn_events/snippets/event_detail_block.html:31
 msgid "Location"
 msgstr ""
 
-#: forms/event.py:47
+#: forms/event.py:49
 msgid "Description"
 msgstr ""
 
-#: forms/event.py:53 models/event.py:17
+#: forms/event.py:55 models/event.py:17
+#: templates/djinn_events/snippets/event_detail_block.html:38
 msgid "Link"
 msgstr ""
 
-#: forms/event.py:66
+#: forms/event.py:68
 msgid "Save event"
 msgstr ""
 
-#: forms/event.py:67
+#: forms/event.py:69
 msgid "Cancel"
 msgstr ""
 
-#: forms/event.py:68 templates/djinn_events/snippets/events_viewlet.html:12
+#: forms/event.py:70 templates/djinn_events/snippets/events_viewlet.html:12
 msgid "Add event"
 msgstr ""
 
@@ -73,28 +79,28 @@ msgstr ""
 msgid "events"
 msgstr ""
 
-#: templates/djinn_events/event_add.html:11
+#: templates/djinn_events/event_add.html:10
 #: templates/djinn_events/event_edit.html:10
 #: templates/djinn_events/snippets/event_detail_block.html:6
 msgid "Start"
 msgstr ""
 
-#: templates/djinn_events/event_add.html:14
+#: templates/djinn_events/event_add.html:13
 #: templates/djinn_events/event_edit.html:13
-#: templates/djinn_events/snippets/event_detail_block.html:15
+#: templates/djinn_events/snippets/event_detail_block.html:16
 msgid "End"
 msgstr ""
 
-#: templates/djinn_events/event_add.html:19
+#: templates/djinn_events/event_add.html:18
 #: templates/djinn_events/event_edit.html:18
 msgid "Full day"
 msgstr ""
 
-#: templates/djinn_events/snippets/event.html:35
+#: templates/djinn_events/snippets/event.html:39
 msgid "Edit event"
 msgstr ""
 
-#: templates/djinn_events/snippets/event.html:41
+#: templates/djinn_events/snippets/event.html:45
 msgid "Delete event"
 msgstr ""
 
