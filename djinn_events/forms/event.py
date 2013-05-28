@@ -10,7 +10,7 @@ class EventForm(BaseForm):
 
     start_date = forms.DateField(label=_("Start date"),
                                  widget=forms.DateTimeInput(
-            attrs={'class': 'date'},
+            attrs={'class': 'date', "placeholder": _("Date")},
             format="%d-%m-%Y"
             )
                                  )
@@ -18,14 +18,14 @@ class EventForm(BaseForm):
     start_time = forms.TimeField(label=_("Start time"),
                                  required=False,
                                  widget=forms.TextInput(
-            attrs={'class': 'time', 'size': 5}
+            attrs={'class': 'time', 'size': 5, "placeholder": _("Time")}
             )
                                      )
 
     end_date = forms.DateField(label=_("End date"),
                                required=False,
                                widget=forms.DateInput(
-            attrs={'class': 'date'},
+            attrs={'class': 'date', "placeholder": _("Date")},
             format="%d-%m-%Y"
             )
                                )
@@ -33,7 +33,7 @@ class EventForm(BaseForm):
     end_time = forms.TimeField(label=_("End time"),
                                required=False,
                                widget=forms.TextInput(
-            attrs={'class': 'time', 'cols': 5}
+            attrs={'class': 'time', 'cols': 5, "placeholder": _("Time")}
             )
                                      )
 
@@ -49,7 +49,9 @@ class EventForm(BaseForm):
     text = forms.CharField(label=_("Description"),
                            max_length=500,
                            widget=forms.Textarea(
-                attrs={'data-maxchars': 500, 'rows': '3'})
+                attrs={'data-maxchars': 500, 
+                       'class': "count_characters",
+                       'rows': '3'})
                            )
 
     link = forms.CharField(label=_("Link"),
