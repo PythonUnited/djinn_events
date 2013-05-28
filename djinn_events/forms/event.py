@@ -18,14 +18,14 @@ class EventForm(BaseForm):
     start_time = forms.TimeField(label=_("Start time"),
                                  required=False,
                                  widget=forms.TextInput(
-            attrs={'class': 'time', 'size': 5, "placeholder": _("Time")}
+            attrs={'class': 'time', 'size': 5}
             )
                                      )
 
     end_date = forms.DateField(label=_("End date"),
                                required=False,
                                widget=forms.DateInput(
-            attrs={'class': 'date', "placeholder": _("Date")},
+            attrs={'class': 'date'},
             format="%d-%m-%Y"
             )
                                )
@@ -33,7 +33,7 @@ class EventForm(BaseForm):
     end_time = forms.TimeField(label=_("End time"),
                                required=False,
                                widget=forms.TextInput(
-            attrs={'class': 'time', 'cols': 5, "placeholder": _("Time")}
+            attrs={'class': 'time', 'cols': 5}
             )
                                      )
 
