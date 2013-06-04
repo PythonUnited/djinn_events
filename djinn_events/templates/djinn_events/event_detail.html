@@ -11,7 +11,7 @@
 {% block content %}
 
 <section class="intro">
-  {{ object.text|default:""|safe }}
+  <p>{{ object.text|default:""|safe }}</p>
 </section>
 
 {% include "djinn_events/snippets/event_detail_block.html" %}
