@@ -13,14 +13,16 @@ class EventView(DetailView):
         _link = (self.object.link or "").split("::")[0]
         
         if _link.startswith("urn"):
-            return urn_to_object(_.link).get_absolute_url()
+            return urn_to_object(_link).get_absolute_url()
         else:
             return _link
 
     @property
     def link_target(self):
-
-        return (self.object.link or "").split("::")[1]
+        try:
+            return (self.object.link or "").split("::")[1]
+        except:
+            return None
 
     @property
     def link_title(self):
