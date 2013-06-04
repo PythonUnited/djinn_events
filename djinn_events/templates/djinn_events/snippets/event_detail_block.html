@@ -15,14 +15,10 @@
     {% if object.has_end %}
     <dt>{% trans "End" %}</dt>
     <dd>
-      {% if object.start_date != object.end_date %}
-        {% if object.end_time %}
-          {{ object.end|date:"DATETIME_FORMAT" }}
-        {% else %}
-          {{ object.end|date:"DATE_FORMAT" }}
-        {% endif %}
-      {% elif object.end_time %}
-        {{ object.end|date:"TIME_FORMAT" }}      
+      {% if object.end_time %}
+      {{ object.end|date:"DATETIME_FORMAT" }}
+      {% else %}
+      {{ object.end|date:"DATE_FORMAT" }}
       {% endif %}
     </dd>
     {% endif %}
