@@ -32,7 +32,7 @@ class EventViewlet(TemplateView):
                                            start_date__gte=today)
 
         return (end_date_later_than_now | no_end_date).order_by(
-            "start_date")[:limit]
+            "-start_date")[:limit]
 
     @property
     def show_more(self, limit=SHOW_N_EVENTS):
