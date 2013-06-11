@@ -39,14 +39,23 @@ class EventForm(BaseForm):
 
     title = forms.CharField(label=_("Title"),
                             help_text=_("50 characters max"),
-                            max_length=50)
+                            max_length=50,
+                           widget=forms.TextInput(
+                attrs={'data-maxchars': 50,
+                       'class': "count_characters"})
+                           )
 
     location = forms.CharField(label=_("Location"),
                                help_text=_("50 characters max"),
                                required=False,
-                               max_length=50)
+                               max_length=50,
+                           widget=forms.TextInput(
+                attrs={'data-maxchars': 50,
+                       'class': "count_characters"})
+                           )
 
     text = forms.CharField(label=_("Description"),
+                           help_text=_("500 characters max"),
                            max_length=500,
                            widget=forms.Textarea(
                 attrs={'data-maxchars': 500, 
