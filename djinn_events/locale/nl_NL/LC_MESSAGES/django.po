@@ -129,3 +129,5 @@ msgstr "Alle evenementen"
 msgid "No events"
 msgstr "Geen gebeurtenissen"
 
+msgid "When?"
+msgstr "Wanneer?"
