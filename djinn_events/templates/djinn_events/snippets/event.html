@@ -5,7 +5,7 @@
   <a data-target="#MyModal"
      href="{% url djinn_events_view_event object.id object.slug %}?modal=1"
      data-toggle="modal">
-    {{ object.title|abbreviate:"50" }}
+    {{ object.title|abbreviate:50 }}
   </a>
       
   <time>
@@ -31,7 +31,7 @@
       
   <div class="location">{{ object.location }}</div>
       
-  <p>{{ object.text|safe|abbreviate:"100" }}</p>
+  <p>{{ object.text|safe|abbreviate:100 }}</p>
 
   {% ifpermission object request.user contenttypes.change_contenttype %}
   <span class="controls">

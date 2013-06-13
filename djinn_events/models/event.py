@@ -42,7 +42,7 @@ class Event(BaseContent):
 
     class Meta:
         app_label = 'djinn_events'
-        ordering = ('-created', )
+        ordering = ('-start_date', )
 
 
 CTRegistry.register("event", 
