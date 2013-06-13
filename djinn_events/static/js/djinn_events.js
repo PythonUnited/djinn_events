@@ -60,4 +60,13 @@ $(document).ready(function() {
           $("#id_end_time").val(djinn.events.calc_end_time($("#id_start_time").val()));
         }
       });
+
+    $(document).on("submit", "body.event.edit form", function(e) {
+        $(e.currentTarget).find(":input").each(function() {
+            if ($(this).val() == $(this).attr("placeholder")) {
+              $(this).val("");
+            }
+          });
+        return true;
+      });
   });
