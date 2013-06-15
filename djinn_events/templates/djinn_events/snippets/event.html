@@ -6,22 +6,18 @@
      href="{% url djinn_events_view_event object.id object.slug %}?modal=1"
      data-toggle="modal">{{ object.title|abbreviate:50 }}</a>
       
-  <time>{% if object.start_time %}
-    {{ object.start|date:"DATETIME_FORMAT" }}
-    {% else %}
-    {{ object.start|date:"DATE_FORMAT" }}
+  <time>
+    {% if object.start_time %}{{ object.start|date:"DATETIME_FORMAT" }}
+    {% else %}{{ object.start|date:"DATE_FORMAT" }}
     {% endif %}
     
     {% if object.has_end %}
     -
     {% if object.start_date != object.end_date %}
-    {% if object.end_time %}
-    {{ object.end|date:"DATETIME_FORMAT" }}
-    {% else %}
-    {{ object.end|date:"DATE_FORMAT" }}
+    {% if object.end_time %}{{ object.end|date:"DATETIME_FORMAT" }}
+    {% else %}{{ object.end|date:"DATE_FORMAT" }}
     {% endif %}
-    {% elif object.end_time %}
-    {{ object.end|date:"TIME_FORMAT" }}      
+    {% elif object.end_time %}{{ object.end|date:"TIME_FORMAT" }}      
     {% endif %}
     {% endif %}</time>
       
