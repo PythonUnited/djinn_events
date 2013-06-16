@@ -8,15 +8,15 @@
       
   <time>
     {% if object.start_time %}{{ object.start|date:"DATETIME_FORMAT" }}
-    {% else %}{{ object.start|date:"DATE_FORMAT" }}{% endif %}
-    
-    {% if object.has_end %}
+    {% else %}{{ object.start|date:"DATE_FORMAT" }}{% endif %}{% if object.has_end %}
     -
     {% if object.start_date != object.end_date %}
     {% if object.end_time %}{{ object.end|date:"DATETIME_FORMAT" }}{% else %}{{ object.end|date:"DATE_FORMAT" }}{% endif %}{% elif object.end_time %}{{ object.end|date:"TIME_FORMAT" }}{% endif %}{% endif %}</time>
       
+  {% if object.location %}
   <div class="location">{{ object.location }}</div>
-      
+  {% endif %}
+
   <p>{{ object.text|safe|abbreviate:100 }}</p>
 
   {% ifpermission object request.user contenttypes.change_contenttype %}
