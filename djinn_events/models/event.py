@@ -15,6 +15,12 @@ class Event(BaseContent):
     end_time = models.TimeField(_('End time'), null=True, blank=True)
     location = models.CharField(_('Location'), max_length=200)
     link = models.CharField(_('Link'), max_length=200)
+
+    def is_published(self):
+
+        now = datetime.now()
+
+        return super(Announcement, self).is_published() and self.end_date < now
     
     @property
     def has_end(self):
