@@ -20,7 +20,7 @@ class Event(BaseContent):
 
         now = datetime.now()
 
-        return super(Announcement, self).is_published() and self.end_date < now
+        return super(Event, self).is_published() and self.end_date < now
     
     @property
     def has_end(self):
