@@ -47,17 +47,29 @@ $(document).ready(function() {
 
     // Naive implementation that does string wise comparison
     $(document).on("change", ".event #id_start_date", function(e) {
-        if (!$("#id_end_date").val()) {
+
+        console.log($("#id_end_date").val());
+
+        if ((!$("#id_end_date").val()) || $("#id_end_date").val() == $("#id_end_date").attr("placeholder")) {
           $("#id_end_date").val($("#id_start_date").val());
+          $("#id_end_date").removeClass("placeholder");
         } else if ($("#id_end_date").val() < $("#id_start_date").val()) {
           $("#id_end_date").val($("#id_start_date").val());
+          $("#id_end_date").removeClass("placeholder");
         }
       });
 
     // Naive implementation that does string wise comparison
     $(document).on("change", ".event #id_start_time", function(e) {
+        
+        if ((!$("#id_end_time").val()) || $("#id_end_time").val() == $("#id_end_time").attr("placeholder")) {
+          $("#id_end_time").val(djinn.events.calc_end_time($("#id_start_time").val()));
+          $("#id_end_time").removeClass("placeholder");
+        }
+
         if ($("#id_end_time").val().substr(0, 3) <= $("#id_start_time").val().substr(0, 3)) {
           $("#id_end_time").val(djinn.events.calc_end_time($("#id_start_time").val()));
+          $("#id_end_time").removeClass("placeholder");
         }
       });
 

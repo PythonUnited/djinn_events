@@ -19,7 +19,7 @@ class Event(BaseContent):
     def is_published(self):
 
         return super(Event, self).is_published() and \
-            self.end_date < date.today()
+            (not self.end_date or (self.end_date < date.today()))
     
     @property
     def has_end(self):
