@@ -47,17 +47,42 @@ $(document).ready(function() {
 
     // Naive implementation that does string wise comparison
     $(document).on("change", ".event #id_start_date", function(e) {
-        if (!$("#id_end_date").val()) {
-          $("#id_end_date").val($("#id_start_date").val());
-        } else if ($("#id_end_date").val() < $("#id_start_date").val()) {
-          $("#id_end_date").val($("#id_start_date").val());
+
+        var startDate = $("#id_start_date").val();
+        var endDate = $("#id_end_date").val();
+
+        if ((!endDate) || endDate == $("#id_end_date").attr("placeholder")) {
+          $("#id_end_date").val(startDate);
+          $("#id_end_date").removeClass("placeholder");
+        } else if (endDate < startDate) {
+          $("#id_end_date").val(startDate);
+          $("#id_end_date").removeClass("placeholder");
         }
       });
 
     // Naive implementation that does string wise comparison
     $(document).on("change", ".event #id_start_time", function(e) {
-        if ($("#id_end_time").val().substr(0, 3) <= $("#id_start_time").val().substr(0, 3)) {
-          $("#id_end_time").val(djinn.events.calc_end_time($("#id_start_time").val()));
+
+        var startTime = $("#id_start_time").val();
+        var endTime = $("#id_end_time").val();
+        
+        if ((!endTime) || endTime == $("#id_end_time").attr("placeholder")) {
+          $("#id_end_time").val(djinn.events.calc_end_time(startTime));
+          $("#id_end_time").removeClass("placeholder");
         }
+
+        if (endTime.substr(0, 3) <= startTime.substr(0, 3)) {
+          $("#id_end_time").val(djinn.events.calc_end_time(startTime));
+          $("#id_end_time").removeClass("placeholder");
+        }
+      });
+
+    $(document).on("submit", "body.event.edit form", function(e) {
+        $(e.currentTarget).find(":input").each(function() {
+            if ($(this).val() == $(this).attr("placeholder")) {
+              $(this).val("");
+            }
+          });
+        return true;
       });
   });

@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, date
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from djinn_contenttypes.registry import CTRegistry
@@ -15,6 +15,11 @@ class Event(BaseContent):
     end_time = models.TimeField(_('End time'), null=True, blank=True)
     location = models.CharField(_('Location'), max_length=200)
     link = models.CharField(_('Link'), max_length=200)
+
+    def is_published(self):
+
+        return super(Event, self).is_published() and \
+            (not self.end_date or (self.end_date < date.today()))
     
     @property
     def has_end(self):
