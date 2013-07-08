@@ -12,11 +12,11 @@ requires = [
     ]
 
 setup(name='djinn_events',
-      version="1.0.0-snapshot",
-      description='PythonUnited Intranet Events',
+      version="1.0.0",
+      description='Djinn Intranet Events',
       long_description=README + '\n\n' +  CHANGES,
       classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 5 - Production/Stable",
         "Framework :: Django",
         "Intended Audience :: Developers",
         "License :: Freely Distributable",
