@@ -1,6 +1,7 @@
 1.0.2
 =====
  * Move to haystack 2.x
+ * Move to Django 1.5.x
 
 1.0.1
 =====
