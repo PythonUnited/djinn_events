@@ -3,7 +3,7 @@
 
 <li class="event editable">
   <a data-target="#MyModal"
-     href="{% url djinn_events_view_event object.id object.slug %}?modal=1"
+     href="{% url 'djinn_events_view_event' object.id object.slug %}?modal=1"
      data-toggle="modal">{{ object.title|abbreviate:50 }}</a>
       
   <time>
@@ -23,13 +23,13 @@
   <span class="controls">
     <a data-toggle="tooltip"
        title="{% trans 'Edit event' %}"
-       href="{%  url djinn_events_edit_event object.id %}">
+       href="{% url 'djinn_events_edit_event' object.id %}">
       <i class="icon-pencil"></i>
     </a>
     <a data-toggle="tooltip"
        class="rm-inline"
        title="{% trans 'Delete event' %}"
-       href="{%  url djinn_events_delete_event object.id %}">
+       href="{% url 'djinn_events_delete_event' object.id %}">
       <i class="icon-remove"></i>
     </a>
   </span>

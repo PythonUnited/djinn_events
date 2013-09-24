@@ -1,11 +1,9 @@
-from haystack import site
 from djinn_events.models.event import Event
-from pgsearch.base import ContentRealTimeSearchIndex
+from pgsearch.base import ContentSearchIndex
 
 
-class EventIndex(ContentRealTimeSearchIndex):
+class EventIndex(ContentSearchIndex):
 
-    """ Index for events """
+    def get_model(self):
 
-
-site.register(Event, EventIndex)
+        return Event

@@ -5,7 +5,7 @@
 {% load auth_tags %}
 
 {% block title %}
-<a href="{% url djinn_events_view_event pk=modelinstance.pk slug=modelinstance.slug %}">
+<a href="{% url 'djinn_events_view_event' pk=modelinstance.pk slug=modelinstance.slug %}">
   {{ modelinstance.title|truncatechars:80 }}
 </a>
 {% endblock %}
