@@ -8,6 +8,9 @@ from djinn_contenttypes.forms.base import BaseForm
 
 class EventForm(BaseForm):
 
+    # Translators: event edit general help
+    help = _("Edit event")
+
     start_date = forms.DateField(label=_("Start date"),
                                  widget=forms.DateTimeInput(
             attrs={'class': 'date', "placeholder": _("Date")},

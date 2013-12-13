@@ -5,7 +5,7 @@
   <header>
     <h2>{% trans "Events" %}
 
-      {% ifpermission "" request.user djinn_events.add_event %}
+      {% ifpermission "" request.user 'djinn_events.add_event' %}
       <span class="controls">
         <a href="{% url 'djinn_events_add_event' %}"
            data-toggle="tooltip"
@@ -27,7 +27,9 @@
   </ul>
 
   {% if view.show_more %}
-  <a href="{% url 'haystack_search' %}?content_type=event&restrict_filters=">{% trans "All events" %}</a>
+  <a href="{% url 'haystack_search' %}?meta_type=event">
+    {% trans "All events" %}
+  </a>
   {% endif %}
 
   {% else %}
