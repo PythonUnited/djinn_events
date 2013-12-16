@@ -1,6 +1,7 @@
 {% extends "djinn_contenttypes/base_detail.html" %}
 
 {% load auth_tags i18n djinn_contenttypes %}
+{% load contentaction_tags %}
 
 {% block header %}
 <header>
@@ -21,7 +22,7 @@
 {% block right-pane %}
 
 <div class="action-bar">
-  {% ifpermission object request.user djinn_events.change_event %}
+  {% ifpermission object request.user 'djinn_events.change_event' %}
   {% edit_content object 'Bewerken' '' %}
   {% endifpermission %}
 </div>
