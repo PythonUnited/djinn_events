@@ -17,7 +17,7 @@ class EventForm(BaseForm):
             format="%d-%m-%Y"
             )
                                  )
-    
+
     start_time = forms.TimeField(label=_("Start time"),
                                  required=False,
                                  widget=forms.TextInput(
@@ -32,7 +32,7 @@ class EventForm(BaseForm):
             format="%d-%m-%Y"
             )
                                )
-    
+
     end_time = forms.TimeField(label=_("End time"),
                                required=False,
                                widget=forms.TextInput(
@@ -61,7 +61,7 @@ class EventForm(BaseForm):
                            help_text=_("500 characters max"),
                            max_length=500,
                            widget=forms.Textarea(
-                attrs={'data-maxchars': 500, 
+                attrs={'data-maxchars': 500,
                        'class': "count_characters",
                        'rows': '3'})
                            )
@@ -72,14 +72,14 @@ class EventForm(BaseForm):
                            widget=LinkWidget())
 
     def clean_link(self):
-        
+
         """ Always store the unquoted version """
-        
+
         return unquote_plus(self.cleaned_data['link'])
 
     def labels(self):
 
-        return {'submit': _("Save event"), 
+        return {'submit': _("Save event"),
                 'cancel': _("Cancel"),
                 'header': _("Add event")}
 
