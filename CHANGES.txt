@@ -1,3 +1,7 @@
+1.0.5
+=====
+* Override controls for submit 
+
 1.0.4
 =====
  * Styling and template fixes
