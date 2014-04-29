@@ -14,7 +14,9 @@ _urlpatterns = patterns(
     )
 
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
+
     (r'^events/', include(_urlpatterns)),
     (r'^events/', include(generate_model_urls(Event))),
 )

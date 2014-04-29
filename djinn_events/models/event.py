@@ -20,7 +20,7 @@ class Event(BaseContent):
 
         return super(Event, self).is_published() and \
             (not self.end_date or (self.end_date < date.today()))
-    
+
     @property
     def has_end(self):
 
@@ -31,7 +31,7 @@ class Event(BaseContent):
     def start(self):
 
         if self.start_time:
-            return datetime.combine(self.start_date, 
+            return datetime.combine(self.start_date,
                                     self.start_time)
         else:
             return self.start_date
@@ -40,7 +40,7 @@ class Event(BaseContent):
     def end(self):
 
         if self.end_time:
-            return datetime.combine(self.end_date, 
+            return datetime.combine(self.end_date,
                                     self.end_time)
         else:
             return self.end_date
@@ -50,7 +50,7 @@ class Event(BaseContent):
         ordering = ('-start_date', )
 
 
-CTRegistry.register("event", 
+CTRegistry.register("event",
                     {"class": Event,
                      "app": "djinn_events",
                      "label": _("Event"),

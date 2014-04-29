@@ -11,65 +11,69 @@ class EventForm(BaseForm):
     # Translators: event edit general help
     help = _("Edit event")
 
-    start_date = forms.DateField(label=_("Start date"),
-                                 widget=forms.DateTimeInput(
+    start_date = forms.DateField(
+        label=_("Start date"),
+        widget=forms.DateTimeInput(
             attrs={'class': 'date', "placeholder": _("Date")},
             format="%d-%m-%Y"
-            )
-                                 )
+        ))
 
-    start_time = forms.TimeField(label=_("Start time"),
-                                 required=False,
-                                 widget=forms.TextInput(
+    start_time = forms.TimeField(
+        label=_("Start time"),
+        required=False,
+        widget=forms.TextInput(
             attrs={'class': 'time', 'size': 5, "placeholder": _("Time")},
-            )
-                                     )
+        ))
 
-    end_date = forms.DateField(label=_("End date"),
-                               required=False,
-                               widget=forms.DateInput(
+    end_date = forms.DateField(
+        label=_("End date"),
+        required=False,
+        widget=forms.DateInput(
             attrs={'class': 'date', "placeholder": _("Date")},
             format="%d-%m-%Y"
-            )
-                               )
+        ))
 
-    end_time = forms.TimeField(label=_("End time"),
-                               required=False,
-                               widget=forms.TextInput(
+    end_time = forms.TimeField(
+        label=_("End time"),
+        required=False,
+        widget=forms.TextInput(
             attrs={'class': 'time', 'size': 5, "placeholder": _("Time")},
-            )
-                                     )
+        ))
 
-    title = forms.CharField(label=_("Title"),
-                            help_text=_("50 characters max"),
-                            max_length=50,
-                           widget=forms.TextInput(
-                attrs={'data-maxchars': 50,
-                       'class': "count_characters"})
-                           )
+    title = forms.CharField(
+        label=_("Title"),
+        help_text=_("50 characters max"),
+        max_length=50,
+        widget=forms.TextInput(
+            attrs={'data-maxchars': 50,
+                   'class': "count_characters"}
+        ))
 
-    location = forms.CharField(label=_("Location"),
-                               help_text=_("50 characters max"),
-                               required=False,
-                               max_length=50,
-                           widget=forms.TextInput(
-                attrs={'data-maxchars': 50,
-                       'class': "count_characters"})
-                           )
+    location = forms.CharField(
+        label=_("Location"),
+        help_text=_("50 characters max"),
+        required=False,
+        max_length=50,
+        widget=forms.TextInput(
+            attrs={'data-maxchars': 50,
+                   'class': "count_characters"}
+        ))
 
-    text = forms.CharField(label=_("Description"),
-                           help_text=_("500 characters max"),
-                           max_length=500,
-                           widget=forms.Textarea(
-                attrs={'data-maxchars': 500,
-                       'class': "count_characters",
-                       'rows': '3'})
-                           )
+    text = forms.CharField(
+        label=_("Description"),
+        help_text=_("500 characters max"),
+        max_length=500,
+        widget=forms.Textarea(
+            attrs={'data-maxchars': 500,
+                   'class': "count_characters",
+                   'rows': '3'}
+        ))
 
-    link = forms.CharField(label=_("Link"),
-                           required=False,
-                           max_length=200,
-                           widget=LinkWidget())
+    link = forms.CharField(
+        label=_("Link"),
+        required=False,
+        max_length=200,
+        widget=LinkWidget())
 
     def clean_link(self):
 
