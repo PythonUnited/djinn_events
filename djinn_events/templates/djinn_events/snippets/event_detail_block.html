@@ -1,4 +1,4 @@
-{% load i18n djinn_contenttypes humanize %}
+{% load i18n djinn_contenttypes djinn_forms humanize %}
 
 <section class="details">
 
@@ -34,9 +34,7 @@
     {% if object.link %}
     <dt>{% trans "Link" %}</dt>
     <dd>
-      <a href="{{ view.link }}" target="{{ view.link_target }}">
-        {{ view.link_title|abbreviate:50 }}
-      </a>
+      {% link_as_a object.link %}
     </dd>
     {% endif %}
 
