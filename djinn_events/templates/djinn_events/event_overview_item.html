@@ -3,6 +3,7 @@
 {% load contentaction_tags %}
 {% load contentblock_tags %}
 {% load auth_tags %}
+{% load i18n %}
 
 {% block icon %}
 <figure class="profile-photo">
@@ -18,16 +19,27 @@
 </a>
 {% endblock %}
 
-{% block summary %}
+{% block subtitle %}
 {{ modelinstance.text|default:""|striptags|replace:"'&nbsp;',' '"|truncatechars:80|safe }}
+{% endblock %}
+
+{% block summary %}
+        <p class="profile-content-info">
+        <span class="profile-type">{% block profiletype %}{% trans "Vergeet-me-nietje" %}{% endblock %}</span> -
+        {{ modelinstance.start_date }}{% if modelinstance.end_date %} - {{ modelinstance.end_date }}{% endif %}{% if modelinstance.location %},
+            {{ modelinstance.location }}{% endif %}
+        </p>
 {% endblock %}
 
 {% block actions %}
 <div class="overviewactions">
-  <ul>
-    {% ifpermission modelinstance request.user contenttypes.change_contenttype %}
-    <li>{% edit_content modelinstance 'Bewerken' '' %}</li>
+    Geplaatst op {{ modelinstance.start_date|date }} door
+    <a class="userprofile"
+           href="{{ modelinstance.get_owner.profile.get_absolute_url }}">
+          {{ modelinstance.get_owner.profile|default:"" }}
+    </a>
+    {% ifpermission modelinstance request.user 'contenttypes.change_contenttype' %}
+    | {% edit_content modelinstance 'Bewerken' '' %}
     {% endifpermission %}
-  </ul>
 </div>
 {% endblock %}
