@@ -8,11 +8,12 @@ CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
 requires = [
     'django',
-    'pgintranet'
+    'pgintranet',
+    'djinn_contenttypes>=1.3.1'
     ]
 
 setup(name='djinn_events',
-      version="1.0.6",
+      version="1.0.7",
       description='Djinn Intranet Events',
       long_description=README + '\n\n' + CHANGES,
       classifiers=[

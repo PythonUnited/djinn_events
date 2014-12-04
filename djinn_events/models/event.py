@@ -16,9 +16,10 @@ class Event(BaseContent):
     location = models.CharField(_('Location'), max_length=200)
     link = models.CharField(_('Link'), max_length=200)
 
+    @property
     def is_published(self):
 
-        return super(Event, self).is_published() and \
+        return super(Event, self).is_published and \
             (not self.end_date or (self.end_date < date.today()))
 
     @property

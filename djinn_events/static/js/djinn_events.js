@@ -2,8 +2,8 @@
  * Djinn events JS lib
  */
 
-// Use pg namespace
-if (djinn == undefined) {
+// Use djinn namespace
+if (djinn === undefined) {
     var djinn = {};
 }
 
