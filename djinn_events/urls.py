@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, url, include
+from django.conf.urls import patterns, url, include
 from views.eventviewlet import EventViewlet
 from models.event import Event
 from djinn_contenttypes.views.utils import generate_model_urls

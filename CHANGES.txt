@@ -1,6 +1,7 @@
 1.0.7
 =====
 * Move to new publishing model from djinn_contenttypes
+* Move to Django 1.6.x
 
 1.0.6
 =====
