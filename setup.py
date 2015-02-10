@@ -9,7 +9,7 @@ CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 requires = [
     'django',
     'pgintranet',
-    'djinn_contenttypes>=1.3.1'
+    'djinn_contenttypes>=1.4.0'
     ]
 
 setup(name='djinn_events',
