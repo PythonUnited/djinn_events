@@ -3,24 +3,30 @@
 <section id="events">
   
   <header>
-    <h2>{% trans "Events" %}
+    <h1>{% trans "Events" %}
 
       {% ifpermission "" request.user 'djinn_events.add_event' %}
       <span class="controls">
         <a href="{% url 'djinn_events_add_event' %}"
            data-toggle="tooltip"
            title="{% trans 'Add event' %}"
+           class="add-inline"
            >
           <i class="icon-plus"></i>
         </a>
+        <div class="help">
+            <div class="help-tooltip">
+                {% trans "tooltip-add-event" %}
+            </div>
+        </div>
       </span>
       {% endifpermission %}
-    </h2>
+    </h1>
   </header>
 
   {% if view.events|length > 0 %}
 
-  <ul id="eventlist">
+  <ul id="eventlist" class="simple-list">
     {% for event in view.events %}
     {% include "djinn_events/snippets/event.html" with object=event %}
     {% endfor %}
