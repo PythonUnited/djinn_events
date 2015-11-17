@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from djinn_forms.widgets.link import LinkWidget
 from djinn_events.models.event import Event
 from djinn_contenttypes.forms.base import BaseForm
-
+from djinn_events import settings
 
 class EventForm(BaseForm):
 
@@ -15,7 +15,7 @@ class EventForm(BaseForm):
         label=_("Start date"),
         widget=forms.DateTimeInput(
             attrs={'class': 'date', "placeholder": _("Date")},
-            format="%d-%m-%Y"
+            format=settings.DEFAULT_DATE_INPUT_FORMAT
         ))
 
     start_time = forms.TimeField(
@@ -30,7 +30,7 @@ class EventForm(BaseForm):
         required=False,
         widget=forms.DateInput(
             attrs={'class': 'date', "placeholder": _("Date")},
-            format="%d-%m-%Y"
+            format=settings.DEFAULT_DATE_INPUT_FORMAT
         ))
 
     end_time = forms.TimeField(
