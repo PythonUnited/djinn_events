@@ -13,7 +13,7 @@ requires = [
     ]
 
 setup(name='djinn_events',
-      version="1.0.7",
+      version="1.0.8",
       description='Djinn Intranet Events',
       long_description=README + '\n\n' + CHANGES,
       classifiers=[
