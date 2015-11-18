@@ -1,3 +1,7 @@
+1.0.10
+=====
+* added translations
+
 1.0.9
 =====
 * django 1.8 compatibility
