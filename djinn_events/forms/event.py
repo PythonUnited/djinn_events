@@ -1,4 +1,4 @@
-from urllib import unquote_plus
+from urllib.parse import unquote_plus
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from djinn_forms.widgets.link import LinkWidget
@@ -13,7 +13,7 @@ class EventForm(BaseForm):
 
     start_date = forms.DateField(
         label=_("Start date"),
-        widget=forms.DateTimeInput(
+        widget=forms.DateInput(
             attrs={'class': 'date', "placeholder": _("Date")},
             format=settings.DEFAULT_DATE_INPUT_FORMAT
         ))

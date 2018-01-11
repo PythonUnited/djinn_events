@@ -37,4 +37,4 @@ def create_permissions(**kwargs):
     role_owner.add_permission_if_missing(delete)
 
 
-signals.post_syncdb.connect(create_permissions, sender=models)
+signals.post_migrate.connect(create_permissions, sender=models)
