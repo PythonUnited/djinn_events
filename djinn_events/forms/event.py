@@ -3,10 +3,10 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from djinn_forms.widgets.link import LinkWidget
 from djinn_events.models.event import Event
-from djinn_contenttypes.forms.base import BaseForm
+from djinn_contenttypes.forms.base import BaseContentForm
 from djinn_events import settings
 
-class EventForm(BaseForm):
+class EventForm(BaseContentForm):
 
     # Translators: event edit general help
     help = _("Edit event")
@@ -87,5 +87,10 @@ class EventForm(BaseForm):
                 'cancel': _("Cancel"),
                 'header': _("Add event")}
 
-    class Meta(BaseForm.Meta):
+    class Meta(BaseContentForm.Meta):
         model = Event
+        fields = [
+            'start_date', 'start_time', 'end_date', 'end_time',
+            'title', 'location', 'text', 'link',
+            'publish_for_feed', 'description_feed'
+        ]
