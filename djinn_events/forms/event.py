@@ -65,7 +65,7 @@ class EventForm(BaseContentForm):
         max_length=500,
         widget=forms.Textarea(
             attrs={'data-maxchars': 500,
-                   'class': "count_characters",
+                   'class': "count_characters description_feed_src",
                    'rows': '3'}
         ))
 
