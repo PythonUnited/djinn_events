@@ -1,8 +1,7 @@
 {% load i18n humanize djinn_contenttypes auth_tags %}
 
-
 {#<li class="event editable">#}
-<li>
+<li class="events-item">
   <a data-target="#MyModal"
      href="{% url 'djinn_events_view_event' object.id object.slug %}?modal=1"
      data-toggle="modal">{{ object.title|abbreviate:50 }}</a>
@@ -15,29 +14,16 @@
     {% if object.end_time %}{{ object.end|date:_("MONTH_DAY_TIME_FORMAT") }}{% else %}{{ object.end|date:_("MONTH_DAY_FORMAT") }}{% endif %}{% elif object.end_time %}{{ object.end|date:"TIME_FORMAT" }}{% endif %}{% endif %}{% if object.location %}, {{ object.location }}{% endif %}</time>
 
 {#  <p>{{ object.text|safe|abbreviate:100 }}</p>#}
-  
   <span class="controls">
 
-    {% with perm=object|edit_permission_id %}
-    {% ifpermission object request.user perm %}
-    <a data-toggle="tooltip"
-       title="{% trans 'Edit event' %}"
-       href="{% url 'djinn_events_edit_event' object.id %}">
-      <i class="icon-pencil"></i>
+    {% ifpermission object request.user 'contenttypes.change_contenttype' %}
+    <a href="{% url 'djinn_events_edit_event' object.id %}"
+       data-toggle="tooltip"
+       class="edit-no-inline footer action"
+       title="{% trans 'Edit event' %}">
+        Bewerken
     </a>
     {% endifpermission %}
-    {% endwith %}
-
-    {% with perm=object|delete_permission_id %}
-    {% ifpermission object request.user perm %}
-    <a data-toggle="tooltip"
-       class="rm-inline"
-       title="{% trans 'Delete event' %}"
-       href="{% url 'djinn_events_delete_event' object.id %}">
-      <i class="icon-remove"></i>
-    </a>
-    {% endifpermission %}
-    {% endwith %}
 
   </span>
 
