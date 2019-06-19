@@ -18,7 +18,7 @@
 
     {% ifpermission object request.user 'contenttypes.change_contenttype' %}
     <a href="{% url 'djinn_events_edit_event' object.id %}"
-       data-toggle="tooltip"
+{#       data-toggle="tooltip"#}
        class="edit-no-inline footer action"
        title="{% trans 'Edit event' %}">
         Bewerken
