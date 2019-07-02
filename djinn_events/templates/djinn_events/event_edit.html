@@ -31,6 +31,15 @@
 
 {{ form.link|bootstrap }}
 
+{% ifpermission None request.user "auth.manage_feeds" %}
+    <h3>{% trans "Weergave op infoscherm(en)" %}</h3>
+    <div><br></div>
+    <div>
+    {{ form.publish_for_feed|bootstrap }}
+    {{ form.description_feed|bootstrap }}
+    </div>
+{% endifpermission %}
+
 {% endblock %}
 
 {% block formcontrols %}
