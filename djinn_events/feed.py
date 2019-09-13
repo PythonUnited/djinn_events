@@ -1,16 +1,23 @@
-from django.contrib.syndication.views import Feed
-from django.urls import reverse
-from django.utils import feedgenerator
-from django.utils.feedgenerator import Enclosure
 from django.utils.safestring import mark_safe
-
+from djinn_contenttypes.base_feed import DjinnFeed
+from djinn_contenttypes.models.feed import MoreInfoFeedGenerator
 from djinn_events.views.eventviewlet import EventViewlet
-from djinn_news.views.newsviewlet import NewsViewlet
-from pgcontent.templatetags.contentblock_tags import fetch_image_url
-from pgprofile.models import GroupProfile
 
 
-class LatestEventsFeed(Feed):
+class EventFeedGenerator(MoreInfoFeedGenerator):
+
+    MORE_INFO_FIELDS = [
+        'more_info_class', 'more_info_text', 'more_info_qrcode_url', ]
+
+    def get_more_info_fields(self):
+        infofields = super().get_more_info_fields()
+
+        return infofields + ['event_location', 'event_start_date',
+                             'event_start_time', 'event_end_date',
+                             'event_end_time']
+
+
+class LatestEventsFeed(DjinnFeed):
     '''
     http://192.168.1.6:8000/news/latest/feed/
     '''
@@ -18,7 +25,7 @@ class LatestEventsFeed(Feed):
     title = "%s laatste vergeet-me-nietjes" % title_prefix
     link = "/events/latest/feed/"
     description = "Homepage laatste vergeet-me-nietjes"
-    feed_type = feedgenerator.DefaultFeed
+    feed_type = EventFeedGenerator
 
     def items(self):
         # re-use the news viewlet as it is on the homepage.
@@ -46,9 +53,26 @@ class LatestEventsFeed(Feed):
 
         return mark_safe(desc)
 
-    # item_link is only needed if NewsItem has no get_absolute_url method.
-    def item_link(self, item):
-        # TODO: nadenken over detail pagina die niet achter inlog zit?
-        # return reverse('djinn_news_view_news', args=[
-        #     item.content_object.pk, item.content_object.slug])
-        return "/"
+    def item_extra_kwargs(self, item):
+
+        info_text = None
+        if len(item.keywordslist) > 0:
+            info_text = "Zoek op: " + " + ".join(
+                item.keywordslist)
+
+        qrcode_img_url = None
+        if item.link:
+            content_url = "%s%s" % (self.http_host, item.link)
+            qrcode_img_url = self.get_qrcode_img_url(
+                content_url, item)
+
+        return {
+            "more_info_class": "gronet",
+            "more_info_text": info_text or '',
+            "more_info_qrcode_url": qrcode_img_url or '',
+            "event_start_date": str(item.start_date or ''),
+            "event_start_time": str(item.start_time or ''),
+            "event_end_date": str(item.end_date or ''),
+            "event_end_time": str(item.end_time or ''),
+            "event_location": item.location or ''
+        }
