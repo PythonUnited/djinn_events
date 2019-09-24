@@ -9,9 +9,6 @@ from djinn_events.views.eventviewlet import EventViewlet
 
 class EventFeedGenerator(MoreInfoFeedGenerator):
 
-    MORE_INFO_FIELDS = [
-        'more_info_class', 'more_info_text', 'more_info_qrcode_url', ]
-
     def get_more_info_fields(self):
         infofields = super().get_more_info_fields()
 
@@ -82,7 +79,7 @@ class LatestEventsFeed(DjinnFeed):
             )
 
         return {
-            "background_img_url": background_img_url,
+            "background_img_url": self.http_host + background_img_url,
             "more_info_class": "gronet",
             "more_info_text": info_text or '',
             "more_info_qrcode_url": qrcode_img_url or '',
