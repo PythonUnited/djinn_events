@@ -1,6 +1,7 @@
 {% extends "djinn_contenttypes/base_edit.html" %}
 
 {% load i18n bootstrap djinn_contenttypes auth_tags %}
+{% load pusimpletext_tags %}
 
 {% block formfields %}
 
@@ -35,8 +36,27 @@
     <h3>{% trans "Weergave op infoscherm(en)" %}</h3>
     <div><br></div>
     <div>
-    {{ form.publish_for_feed|bootstrap }}
-    {{ form.description_feed|bootstrap }}
+        {{ form.publish_for_feed|bootstrap }}
+        <div class="feed_options">
+        {{ form.description_feed|bootstrap }}
+
+        {{ form.userkeywords|bootstrap }}
+        {{ form.extra_media }}
+        {{ form.image_feed_hidden }}
+        {{ form.image_feed }}
+        {{ form.image_feed_crop|bootstrap }}
+        <script>
+            $(document).ready(function() {
+                image_cropping.init();
+            });
+        </script>
+        <div class="control-group">
+            <label class="control-label">{% trans "feed preview" %}</label>
+            {% with preview_instance=form.instance %}
+                {% pusimpletext 'event_feed_preview' %}
+            {% endwith %}
+        </div>
+        </div>
     </div>
 {% endifpermission %}
 
@@ -48,6 +68,10 @@
     <button class="btn btn-primary protected save-action" type="submit"
             value="save" name="action">
       {% trans "Save" %}
+    </button>
+    <button class="btn btn-primary protected save-action" type="submit"
+            value="saveandedit" name="action">
+      {% trans "Save and edit again" %}
     </button>
     <button class="btn protected cancel-action" type="submit"
           value="cancel" name="action">

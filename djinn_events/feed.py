@@ -1,6 +1,9 @@
 from django.utils.safestring import mark_safe
+from image_cropping.utils import get_backend
+
 from djinn_contenttypes.base_feed import DjinnFeed
 from djinn_contenttypes.models.feed import MoreInfoFeedGenerator
+from djinn_contenttypes.settings import FEED_HEADER_HIGH_SIZE
 from djinn_events.views.eventviewlet import EventViewlet
 
 
@@ -66,7 +69,20 @@ class LatestEventsFeed(DjinnFeed):
             qrcode_img_url = self.get_qrcode_img_url(
                 content_url, item)
 
+        background_img_url = None,
+        if item.image:
+            background_img_url = get_backend().get_thumbnail_url(
+                item.image.image,
+                {
+                    'size': FEED_HEADER_HIGH_SIZE,
+                    'box': item.image_feed_crop,
+                    'crop': True,
+                    'detail': True,
+                }
+            )
+
         return {
+            "background_img_url": background_img_url,
             "more_info_class": "gronet",
             "more_info_text": info_text or '',
             "more_info_qrcode_url": qrcode_img_url or '',

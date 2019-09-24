@@ -1,10 +1,12 @@
 from datetime import datetime, date
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-
+from image_cropping import ImageRatioField
+from djinn_contenttypes.models import ImgAttachment
 from djinn_contenttypes.models.feed import FeedMixin
 from djinn_contenttypes.registry import CTRegistry
 from djinn_contenttypes.models.base import BaseContent
+from djinn_contenttypes.settings import FEED_HEADER_HIGH_SIZE
 
 
 class Event(FeedMixin, BaseContent):
@@ -17,6 +19,21 @@ class Event(FeedMixin, BaseContent):
     end_time = models.TimeField(_('End time'), null=True, blank=True)
     location = models.CharField(_('Location'), max_length=200)
     link = models.CharField(_('Link'), max_length=200)
+
+    image_feed = models.ForeignKey(
+        ImgAttachment,
+        related_name='event_image',
+        null=True, blank=True,
+        on_delete=models.SET_NULL,
+        help_text=_("Image for the rss-feed")
+    )
+
+    image_feed_crop = ImageRatioField(
+        'image_feed__image',
+        "%sx%s" % (FEED_HEADER_HIGH_SIZE[0], FEED_HEADER_HIGH_SIZE[1]),
+        help_text=_("Part of the image to use in the rss-feed"),
+        verbose_name=_("Foto uitsnede")
+    )
 
     @property
     def is_published(self):
@@ -58,6 +75,7 @@ CTRegistry.register("event",
                      "app": "djinn_events",
                      "label": _("Event"),
                      "global_add": True,
+                     "allow_saveandedit": True,
                      "add_permission": "djinn_events.add_event",
                      "filter_label": _("Event"),
                      "name_plural": _("events")})
