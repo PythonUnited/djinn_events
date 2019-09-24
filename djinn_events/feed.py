@@ -70,9 +70,9 @@ class LatestEventsFeed(DjinnFeed):
                 content_url, item)
 
         background_img_url = None,
-        if item.image:
+        if item.image_feed:
             background_img_url = get_backend().get_thumbnail_url(
-                item.image.image,
+                item.image_feed.image,
                 {
                     'size': FEED_HEADER_HIGH_SIZE,
                     'box': item.image_feed_crop,
