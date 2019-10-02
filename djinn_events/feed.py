@@ -77,7 +77,7 @@ class LatestEventsFeed(DjinnFeed):
             "background_img_url": "%s%s" % (self.http_host, item.feed_bg_img_url),
             "more_info_class": item.more_info_class,
             "more_info_text": item.more_info_text,
-            "more_info_qrcode_url": item.qrcode_img_url or '',
+            "more_info_qrcode_url": item.qrcode_img_url() or '',
             "event_start_date": str(item.start_date or ''),
             "event_start_time": str(item.start_time or ''),
             "event_end_date": str(item.end_date or ''),
