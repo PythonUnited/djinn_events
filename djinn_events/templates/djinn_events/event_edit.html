@@ -32,6 +32,8 @@
 
 {{ form.link|bootstrap }}
 
+{{ form.parentusergroup|bootstrap }}
+
 {% ifpermission None request.user "auth.manage_feeds" %}
     <h3>{% trans "Weergave op infoscherm(en)" %}</h3>
     <div><br></div>
@@ -50,12 +52,13 @@
                 image_cropping.init();
             });
         </script>
+
         <div class="control-group">
-            <label class="control-label">{% trans "feed preview" %}</label>
-            {% with preview_instance=form.instance %}
-                {% pusimpletext 'event_feed_preview' %}
-            {% endwith %}
+            <label class="control-label">{% trans "infoscherm voorbeeld" %}</label>
+            <iframe width="720" height="460" src="{% url 'djinn_contenttypes_share' form.instance.ct_name form.instance.id %}" frameborder=0 name="feed_preview" id="feed_preview_id">
+            </iframe>
         </div>
+
         </div>
     </div>
 {% endifpermission %}

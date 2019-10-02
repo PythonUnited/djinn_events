@@ -11,6 +11,11 @@ from djinn_contenttypes.settings import FEED_HEADER_HIGH_SIZE
 
 class Event(FeedMixin, BaseContent):
 
+    # BEGIN required by FeedMixin
+    feed_bg_img_fieldname = 'image_feed'
+    feed_bg_img_crop_fieldname = 'image_feed_crop'
+    # END required by FeedMixin
+
     text = models.TextField(_('Text'))
     start_date = models.DateField(_('Start date'))
     start_time = models.TimeField(_('Start time'), null=True, blank=True)
@@ -34,6 +39,10 @@ class Event(FeedMixin, BaseContent):
         help_text=_("Part of the image to use in the rss-feed"),
         verbose_name=_("Foto uitsnede")
     )
+
+    @property
+    def get_qrcode_target_url(self):
+        return self.link
 
     @property
     def is_published(self):

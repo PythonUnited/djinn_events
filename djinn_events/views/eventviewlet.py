@@ -4,6 +4,7 @@ from django.views.generic import TemplateView
 from djinn_contenttypes.views.base import FeedViewMixin
 from djinn_events.models.event import Event
 from djinn_events.settings import SHOW_N_EVENTS
+from pgprofile.models import GroupProfile
 
 
 class EventViewlet(FeedViewMixin, TemplateView):
@@ -17,6 +18,17 @@ class EventViewlet(FeedViewMixin, TemplateView):
             content_type='text/plain',
             **response_kwargs)
 
+    def parentusergroup(self):
+
+        return self.kwargs.get('parentusergroup', None)
+
+    def groupprofile(self):
+
+        pugid = self.parentusergroup()
+        if pugid:
+            return GroupProfile.objects.filter(usergroup__id=pugid).last()
+        return None
+
     def get_context_data(self, **kwargs):
 
         ctx = super(EventViewlet, self).get_context_data(**kwargs)
@@ -29,9 +41,11 @@ class EventViewlet(FeedViewMixin, TemplateView):
 
         today = date.today()
 
-        event_qs = self.get_queryset(Event.objects.all())
+        pug = self.parentusergroup()
+        event_qs = self.get_queryset(Event.objects.filter(
+            parentusergroup_id=pug))
 
-        end_date_later_than_now = Event.objects.filter(end_date__gte=today)
+        end_date_later_than_now = event_qs.filter(end_date__gte=today)
         no_end_date = event_qs.filter(end_date__isnull=True,
                                       start_date__gte=today)
 

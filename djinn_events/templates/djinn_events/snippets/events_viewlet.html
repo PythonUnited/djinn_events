@@ -3,11 +3,11 @@
 <section id="events">
   
   <header>
-    <h1>{% trans "Events" %}
+    <h1>{% if view.parentusergroup %}{% trans "Events in this group" %}{% else %}{% trans "Events" %}{% endif %}
 
       {% ifpermission "" request.user 'djinn_events.add_event' %}
       <span class="controls">
-        <a href="{% url 'djinn_events_add_event' %}"
+        <a href="{% if view.parentusergroup %}{% url 'djinn_events_add_event' view.parentusergroup %}{% else %}{% url 'djinn_events_add_event' %}{% endif %}"
            data-toggle="tooltip"
            title="{% trans 'Add event' %}"
            class="add-inline"
@@ -21,6 +21,17 @@
         </div>
       </span>
       {% endifpermission %}
+      {% ifpermission view.groupprofile request.user 'contenttypes.add_contenttype' %}
+      <span class="controls">
+        <a href="{% if view.parentusergroup %}{% url 'djinn_events_add_event' view.parentusergroup %}{% else %}{% url 'djinn_events_add_event' %}{% endif %}"
+           data-toggle="tooltip"
+           title="{% trans 'Add event' %}"
+           >
+          <i class="icon-plus"></i>
+        </a>
+      </span>
+      {% endifpermission %}
+
     </h1>
   </header>
 
@@ -41,7 +52,12 @@
   {% else %}
   
   <div class="alert alert-info" id="events-alert">
-    {% trans "No events" %}
+    {% if not view.parentusergroup %}
+        {% trans "No events" %}
+    {% else %}
+        {% trans "No events in this group" %}
+    {% endif %}
+
   </div>
   
   {% endif %}

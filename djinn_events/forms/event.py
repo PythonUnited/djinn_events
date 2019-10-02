@@ -117,7 +117,7 @@ class EventForm(DjinnCroppingMixin, BaseContentForm, RelateMixin):
         model = Event
         fields = [
             'start_date', 'start_time', 'end_date', 'end_time',
-            'title', 'location', 'text', 'link',
+            'title', 'location', 'text', 'link', 'parentusergroup',
             'publish_for_feed', 'description_feed',
             'image_feed', 'image_feed_crop'
         ]

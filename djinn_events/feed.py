@@ -1,5 +1,6 @@
 from django.utils.safestring import mark_safe
 from image_cropping.utils import get_backend
+from pgprofile.models.groupprofile import GroupProfile
 
 from djinn_contenttypes.base_feed import DjinnFeed
 from djinn_contenttypes.models.feed import MoreInfoFeedGenerator
@@ -27,10 +28,27 @@ class LatestEventsFeed(DjinnFeed):
     description = "Homepage laatste vergeet-me-nietjes"
     feed_type = EventFeedGenerator
 
+    parentusergroup_id = None
+
+    def get_object(self, request, *args, **kwargs):
+
+        groupprofile_id = kwargs.get('groupprofile_id', None)
+
+        if groupprofile_id:
+            groupprofile = GroupProfile.objects.get(id=groupprofile_id)
+            self.title = "%s nieuws van '%s'" % (
+                self.title_prefix, groupprofile.title)
+            self.description = "%s laatste nieuwsartikelen in %s" % (
+                self.title_prefix, groupprofile.title)
+            self.parentusergroup_id = groupprofile.usergroup_id
+
+        return super().get_object(request, *args, **kwargs)
+
     def items(self):
         # re-use the news viewlet as it is on the homepage.
         eventviewlet = EventViewlet()
         eventviewlet.kwargs = {
+            'parentusergroup': self.parentusergroup_id,
             'for_rssfeed': True
         }
 
@@ -55,34 +73,11 @@ class LatestEventsFeed(DjinnFeed):
 
     def item_extra_kwargs(self, item):
 
-        info_text = None
-        if len(item.keywordslist) > 0:
-            info_text = "Zoek op: " + " + ".join(
-                item.keywordslist)
-
-        qrcode_img_url = None
-        if item.link:
-            content_url = "%s%s" % (self.http_host, item.link)
-            qrcode_img_url = self.get_qrcode_img_url(
-                content_url, item)
-
-        background_img_url = None,
-        if item.image_feed:
-            background_img_url = get_backend().get_thumbnail_url(
-                item.image_feed.image,
-                {
-                    'size': FEED_HEADER_HIGH_SIZE,
-                    'box': item.image_feed_crop,
-                    'crop': True,
-                    'detail': True,
-                }
-            )
-
         return {
-            "background_img_url": "%s%s" % (self.http_host, background_img_url),
-            "more_info_class": "gronet",
-            "more_info_text": info_text or '',
-            "more_info_qrcode_url": qrcode_img_url or '',
+            "background_img_url": "%s%s" % (self.http_host, item.feed_bg_img_url),
+            "more_info_class": item.more_info_class,
+            "more_info_text": item.more_info_text,
+            "more_info_qrcode_url": item.qrcode_img_url or '',
             "event_start_date": str(item.start_date or ''),
             "event_start_time": str(item.start_time or ''),
             "event_end_date": str(item.end_date or ''),
