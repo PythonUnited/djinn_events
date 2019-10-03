@@ -1,11 +1,9 @@
 from django.utils.safestring import mark_safe
-from image_cropping.utils import get_backend
 from pgprofile.models.groupprofile import GroupProfile
-
 from djinn_contenttypes.base_feed import DjinnFeed
 from djinn_contenttypes.models.feed import MoreInfoFeedGenerator
-from djinn_contenttypes.settings import FEED_HEADER_HIGH_SIZE
 from djinn_events.views.eventviewlet import EventViewlet
+from django.utils.translation import gettext_lazy as _
 
 
 class EventFeedGenerator(MoreInfoFeedGenerator):
@@ -22,10 +20,10 @@ class LatestEventsFeed(DjinnFeed):
     '''
     http://192.168.1.6:8000/news/latest/feed/
     '''
-    title_prefix = "Gronet:"
-    title = "%s laatste vergeet-me-nietjes" % title_prefix
+    title_prefix = _("Gronet:")
+    title = _(f"{title_prefix} laatste vergeet-me-nietjes")
     link = "/events/latest/feed/"
-    description = "Homepage laatste vergeet-me-nietjes"
+    description = _("Homepage laatste vergeet-me-nietjes")
     feed_type = EventFeedGenerator
 
     parentusergroup_id = None
@@ -36,10 +34,8 @@ class LatestEventsFeed(DjinnFeed):
 
         if groupprofile_id:
             groupprofile = GroupProfile.objects.get(id=groupprofile_id)
-            self.title = "%s nieuws van '%s'" % (
-                self.title_prefix, groupprofile.title)
-            self.description = "%s laatste nieuwsartikelen in %s" % (
-                self.title_prefix, groupprofile.title)
+            self.title = _(f"{self.title_prefix} nieuws van '{groupprofile.title}'")
+            self.description = _(f"{self.title_prefix} laatste nieuwsartikelen in {groupprofile.title}")
             self.parentusergroup_id = groupprofile.usergroup_id
 
         return super().get_object(request, *args, **kwargs)
@@ -49,7 +45,9 @@ class LatestEventsFeed(DjinnFeed):
         eventviewlet = EventViewlet()
         eventviewlet.kwargs = {
             'parentusergroup': self.parentusergroup_id,
-            'for_rssfeed': True
+            'for_rssfeed': True,
+            'items_no_image': self.items_no_image,
+            'items_with_image': self.items_with_image,
         }
 
         eventlist = eventviewlet.events()
@@ -77,7 +75,7 @@ class LatestEventsFeed(DjinnFeed):
             "background_img_url": "%s%s" % (self.http_host, item.feed_bg_img_url),
             "more_info_class": item.more_info_class,
             "more_info_text": item.more_info_text,
-            "more_info_qrcode_url": item.qrcode_img_url() or '',
+            "more_info_qrcode_url": item.qrcode_img_url(http_host=self.http_host) or '',
             "event_start_date": str(item.start_date or ''),
             "event_start_time": str(item.start_time or ''),
             "event_end_date": str(item.end_date or ''),

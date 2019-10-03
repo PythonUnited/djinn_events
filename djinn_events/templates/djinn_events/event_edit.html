@@ -32,6 +32,8 @@
 
 {{ form.link|bootstrap }}
 
+{{ form.userkeywords|bootstrap }}
+
 {{ form.parentusergroup|bootstrap }}
 
 {% ifpermission None request.user "auth.manage_feeds" %}
@@ -42,7 +44,6 @@
         <div class="feed_options">
         {{ form.description_feed|bootstrap }}
 
-        {{ form.userkeywords|bootstrap }}
         {{ form.extra_media }}
         {{ form.image_feed_hidden }}
         {{ form.image_feed }}

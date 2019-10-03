@@ -45,6 +45,11 @@ class EventViewlet(FeedViewMixin, TemplateView):
         event_qs = self.get_queryset(Event.objects.filter(
             parentusergroup_id=pug))
 
+        if self.kwargs.get('items_with_image', False):
+            event_qs = event_qs.filter(image_feed__isnull=False)
+        if self.kwargs.get('items_no_image', False):
+            event_qs = event_qs.filter(image_feed__isnull=True)
+
         end_date_later_than_now = event_qs.filter(end_date__gte=today)
         no_end_date = event_qs.filter(end_date__isnull=True,
                                       start_date__gte=today)

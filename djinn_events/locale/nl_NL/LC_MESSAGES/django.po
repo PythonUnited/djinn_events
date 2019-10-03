@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: djinn_events\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-18 22:32+0100\n"
+"POT-Creation-Date: 2019-10-03 13:44+0200\n"
 "PO-Revision-Date: 2014-01-06 11:33+0100\n"
 "Last-Translator:   <j.barkhof@provinciegroningen.nl>\n"
 "Language-Team: LANGUAGE <info@pythonunited.com>\n"
@@ -19,132 +19,185 @@ msgstr ""
 "X-Poedit-Language: Dutch\n"
 "X-Translated-Using: django-rosetta 0.7.2\n"
 
+#: feed.py:23
+msgid "Gronet:"
+msgstr ""
+
+#: feed.py:24
+#, python-brace-format
+msgid "{title_prefix} laatste vergeet-me-nietjes"
+msgstr ""
+
+#: feed.py:26
+msgid "Homepage laatste vergeet-me-nietjes"
+msgstr ""
+
+#: feed.py:37
+#, python-brace-format
+msgid "{self.title_prefix} nieuws van '{groupprofile.title}'"
+msgstr ""
+
+#: feed.py:38
+#, python-brace-format
+msgid "{self.title_prefix} laatste nieuwsartikelen in {groupprofile.title}"
+msgstr ""
+
 #. Translators: event edit general help
-#: forms/event.py:12 templates/djinn_events/snippets/event.html:24
+#: forms/event.py:19 templates/djinn_events/snippets/event.html:23
 msgid "Edit event"
 msgstr ""
 "Hier de helptekst \"VERGEET ME NIETJE\" > In Rosetta = Djinn_Events > Edit "
 "event"
 
-#: forms/event.py:15 models/event.py:11
+#: forms/event.py:22 models/event.py:20
 msgid "Start date"
 msgstr "Begindatum"
 
-#: forms/event.py:17 forms/event.py:32
+#: forms/event.py:24 forms/event.py:39
 msgid "Date"
 msgstr ""
 
-#: forms/event.py:22 models/event.py:12
+#: forms/event.py:29 models/event.py:21
 msgid "Start time"
 msgstr "Begintijd"
 
-#: forms/event.py:25 forms/event.py:40
+#: forms/event.py:32 forms/event.py:47
 msgid "Time"
 msgstr ""
 
-#: forms/event.py:29 models/event.py:13
+#: forms/event.py:36 models/event.py:22
 msgid "End date"
 msgstr "Einddatum"
 
-#: forms/event.py:37 models/event.py:15
+#: forms/event.py:44 models/event.py:24
 msgid "End time"
 msgstr "Eindtijd"
 
-#: forms/event.py:44
+#: forms/event.py:51
 msgid "Title"
 msgstr "Titel"
 
-#: forms/event.py:45 forms/event.py:54
+#: forms/event.py:52 forms/event.py:61
 msgid "50 characters max"
 msgstr "Maximaal 50 karakters"
 
-#: forms/event.py:53 models/event.py:16
+#: forms/event.py:60 models/event.py:25
 #: templates/djinn_events/snippets/event_detail_block.html:28
 msgid "Location"
 msgstr "Locatie"
 
-#: forms/event.py:63
+#: forms/event.py:70
 msgid "Description"
 msgstr "Beschrijving"
 
-#: forms/event.py:64
+#: forms/event.py:71
 msgid "500 characters max"
 msgstr "Maximaal 500 karakters"
 
-#: forms/event.py:73 models/event.py:17
+#: forms/event.py:80 models/event.py:26
 #: templates/djinn_events/snippets/event_detail_block.html:35
 msgid "Link"
 msgstr "Link"
 
-#: forms/event.py:86
+#. Translators: Homepage event image label
+#: forms/event.py:88
+msgid "Add homepage image"
+msgstr ""
+
+#: forms/event.py:106
 msgid "Save event"
 msgstr "Gebeurtenis opslaan"
 
-#: forms/event.py:87 templates/djinn_events/event_edit.html:45
+#: forms/event.py:107 templates/djinn_events/event_edit.html:82
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: forms/event.py:88 templates/djinn_events/snippets/events_viewlet.html:12
+#: forms/event.py:108 templates/djinn_events/snippets/events_viewlet.html:12
+#: templates/djinn_events/snippets/events_viewlet.html:28
 msgid "Add event"
 msgstr "Vergeet-me-nietje toevoegen"
 
-#: models/event.py:10
+#: models/event.py:19
 msgid "Text"
 msgstr "Tekst"
 
-#: models/event.py:57 models/event.py:60
+#: models/event.py:33
+msgid "Image for the rss-feed"
+msgstr "Afbeelding voor infoschermen"
+
+#: models/event.py:39
+msgid "Part of the image to use in the rss-feed"
+msgstr "Uitsnede van de afbeelding die gebruikt moet worden voor infoschermen"
+
+#: models/event.py:40
+msgid "Foto uitsnede"
+msgstr ""
+
+#: models/event.py:85 models/event.py:89
 msgid "Event"
 msgstr "Vergeet-me-nietje"
 
-#: models/event.py:61
+#: models/event.py:90
 msgid "events"
 msgstr "Vergeet-me-nietjes"
 
 #: templates/djinn_events/event_add.html:10
-#: templates/djinn_events/event_edit.html:10
+#: templates/djinn_events/event_edit.html:11
 msgid "Start"
 msgstr "Start"
 
 #: templates/djinn_events/event_add.html:15
-#: templates/djinn_events/event_edit.html:15
+#: templates/djinn_events/event_edit.html:16
 msgid "End"
 msgstr "Einde"
 
 #: templates/djinn_events/event_add.html:23
-#: templates/djinn_events/event_edit.html:23
+#: templates/djinn_events/event_edit.html:24
 msgid "Full day"
 msgstr "Duurt de hele dag"
 
-#: templates/djinn_events/event_edit.html:41
-msgid "Save"
+#: templates/djinn_events/event_edit.html:40
+msgid "Weergave op infoscherm(en)"
 msgstr ""
 
-#: templates/djinn_events/event_edit.html:56
+#: templates/djinn_events/event_edit.html:58
+msgid "infoscherm voorbeeld"
+msgstr ""
+
+#: templates/djinn_events/event_edit.html:74
+msgid "Save"
+msgstr "Opslaan"
+
+#: templates/djinn_events/event_edit.html:78
+msgid "Save and edit again"
+msgstr "Opslaan en opnieuw bewerken"
+
+#: templates/djinn_events/event_edit.html:93
 #, python-format
 msgid "Delete this %(object_name)s"
-msgstr ""
+msgstr "Verwijder dit %(object_name)s"
 
-#: templates/djinn_events/event_overview_item.html:28
+#: templates/djinn_events/event_overview_item.html:29
 msgid "Vergeet-me-nietje"
 msgstr ""
 
-#: templates/djinn_events/snippets/event.html:11
-#: templates/djinn_events/snippets/event.html:15
+#: templates/djinn_events/snippets/event.html:10
+#: templates/djinn_events/snippets/event.html:14
 msgid "MONTH_DAY_TIME_FORMAT"
 msgstr ""
 
-#: templates/djinn_events/snippets/event.html:12
-#: templates/djinn_events/snippets/event.html:15
+#: templates/djinn_events/snippets/event.html:11
+#: templates/djinn_events/snippets/event.html:14
 msgid "MONTH_DAY_FORMAT"
 msgstr ""
-
-#: templates/djinn_events/snippets/event.html:35
-msgid "Delete event"
-msgstr "Vergeet-me-nietje verwijderen"
 
 #: templates/djinn_events/snippets/event_detail_block.html:6
 msgid "When?"
 msgstr "Wanneer?"
+
+#: templates/djinn_events/snippets/events_viewlet.html:6
+msgid "Events in this group"
+msgstr "Vergeet-me-nietjes in deze groep"
 
 #: templates/djinn_events/snippets/events_viewlet.html:6
 msgid "Events"
@@ -154,10 +207,17 @@ msgstr "Vergeet-me-nietje"
 msgid "tooltip-add-event"
 msgstr ""
 
-#: templates/djinn_events/snippets/events_viewlet.html:37
+#: templates/djinn_events/snippets/events_viewlet.html:48
 msgid "All events"
 msgstr "Alle vergeet-me-nietjes"
 
-#: templates/djinn_events/snippets/events_viewlet.html:44
+#: templates/djinn_events/snippets/events_viewlet.html:56
 msgid "No events"
 msgstr "Klik op \"Voeg toe\" om een vergeet-me-nietje te plaatsen "
+
+#: templates/djinn_events/snippets/events_viewlet.html:58
+msgid "No events in this group"
+msgstr "Geen vergeet-me-nietjes in deze groep"
+
+#~ msgid "Delete event"
+#~ msgstr "Vergeet-me-nietje verwijderen"

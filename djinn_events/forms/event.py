@@ -4,7 +4,6 @@ from djinn_contenttypes.forms.crop import DjinnCroppingMixin
 from djinn_forms.fields.image import ImageField
 from django.utils.translation import ugettext_lazy as _
 from djinn_contenttypes.models import ImgAttachment
-from djinn_forms.forms.relate import RelateMixin
 from djinn_forms.widgets.image import ImageWidget
 from djinn_forms.widgets.link import LinkWidget
 from djinn_events.models.event import Event
@@ -12,7 +11,7 @@ from djinn_contenttypes.forms.base import BaseContentForm
 from djinn_events import settings
 
 
-class EventForm(DjinnCroppingMixin, BaseContentForm, RelateMixin):
+class EventForm(DjinnCroppingMixin, BaseContentForm):
 
     cropping_field_name = 'image_feed'
 
@@ -119,5 +118,5 @@ class EventForm(DjinnCroppingMixin, BaseContentForm, RelateMixin):
             'start_date', 'start_time', 'end_date', 'end_time',
             'title', 'location', 'text', 'link', 'parentusergroup',
             'publish_for_feed', 'description_feed',
-            'image_feed', 'image_feed_crop'
+            'image_feed', 'image_feed_crop', 'userkeywords'
         ]
