@@ -37,16 +37,17 @@
 {{ form.parentusergroup|bootstrap }}
 
 {% ifpermission None request.user "auth.manage_feeds" %}
-    <h3>{% trans "Weergave op infoscherm(en)" %}</h3>
-    <div><br></div>
-    <div>
+    <div class="control-group">
+        <h3>{% trans "Weergave op infoscherm(en)" %}</h3>
+        <br>
         {{ form.publish_for_feed|bootstrap }}
         <div class="feed_options{% if not form.instance.publish_for_feed %} hide{% endif %}">
         {{ form.description_feed|bootstrap }}
 
+        {{ form.use_default_image|bootstrap }}
         {{ form.extra_media }}
         {{ form.image_feed_hidden }}
-        {{ form.image_feed }}
+        {{ form.image_feed|bootstrap }}
         {{ form.image_feed_crop|bootstrap }}
         <script>
             $(document).ready(function() {
