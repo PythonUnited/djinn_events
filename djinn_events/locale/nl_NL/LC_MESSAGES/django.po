@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: djinn_events\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-03 13:44+0200\n"
+"POT-Creation-Date: 2019-10-15 11:38+0200\n"
 "PO-Revision-Date: 2014-01-06 11:33+0100\n"
 "Last-Translator:   <j.barkhof@provinciegroningen.nl>\n"
 "Language-Team: LANGUAGE <info@pythonunited.com>\n"
@@ -43,7 +43,7 @@ msgid "{self.title_prefix} laatste nieuwsartikelen in {groupprofile.title}"
 msgstr ""
 
 #. Translators: event edit general help
-#: forms/event.py:19 templates/djinn_events/snippets/event.html:23
+#: forms/event.py:19
 msgid "Edit event"
 msgstr ""
 "Hier de helptekst \"VERGEET ME NIETJE\" > In Rosetta = Djinn_Events > Edit "
@@ -101,14 +101,14 @@ msgstr "Link"
 
 #. Translators: Homepage event image label
 #: forms/event.py:88
-msgid "Add homepage image"
+msgid "Add infoscreen image"
 msgstr ""
 
 #: forms/event.py:106
 msgid "Save event"
 msgstr "Gebeurtenis opslaan"
 
-#: forms/event.py:107 templates/djinn_events/event_edit.html:82
+#: forms/event.py:107 templates/djinn_events/event_edit.html:83
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -156,23 +156,23 @@ msgstr "Einde"
 msgid "Full day"
 msgstr "Duurt de hele dag"
 
-#: templates/djinn_events/event_edit.html:40
+#: templates/djinn_events/event_edit.html:41
 msgid "Weergave op infoscherm(en)"
 msgstr ""
 
-#: templates/djinn_events/event_edit.html:58
+#: templates/djinn_events/event_edit.html:59
 msgid "infoscherm voorbeeld"
 msgstr ""
 
-#: templates/djinn_events/event_edit.html:74
+#: templates/djinn_events/event_edit.html:75
 msgid "Save"
 msgstr "Opslaan"
 
-#: templates/djinn_events/event_edit.html:78
+#: templates/djinn_events/event_edit.html:79
 msgid "Save and edit again"
 msgstr "Opslaan en opnieuw bewerken"
 
-#: templates/djinn_events/event_edit.html:93
+#: templates/djinn_events/event_edit.html:94
 #, python-format
 msgid "Delete this %(object_name)s"
 msgstr "Verwijder dit %(object_name)s"

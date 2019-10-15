@@ -85,7 +85,7 @@ class EventForm(DjinnCroppingMixin, BaseContentForm):
     image_feed = ImageField(
         model=ImgAttachment,
         # Translators: Homepage event image label
-        label=_("Add homepage image"),
+        label=_("Add infoscreen image"),
         required=False,
         widget=ImageWidget(
             attrs={
@@ -117,6 +117,6 @@ class EventForm(DjinnCroppingMixin, BaseContentForm):
         fields = [
             'start_date', 'start_time', 'end_date', 'end_time',
             'title', 'location', 'text', 'link', 'parentusergroup',
-            'publish_for_feed', 'description_feed',
+            'publish_for_feed', 'description_feed', 'use_default_image',
             'image_feed', 'image_feed_crop', 'userkeywords'
         ]

@@ -6,7 +6,7 @@ from djinn_contenttypes.models import ImgAttachment
 from djinn_contenttypes.models.feed import FeedMixin
 from djinn_contenttypes.registry import CTRegistry
 from djinn_contenttypes.models.base import BaseContent
-from djinn_contenttypes.settings import FEED_HEADER_HIGH_SIZE
+from djinn_contenttypes.settings import FEED_HEADER_SIZE
 
 
 class Event(FeedMixin, BaseContent):
@@ -35,7 +35,7 @@ class Event(FeedMixin, BaseContent):
 
     image_feed_crop = ImageRatioField(
         'image_feed__image',
-        "%sx%s" % (FEED_HEADER_HIGH_SIZE[0], FEED_HEADER_HIGH_SIZE[1]),
+        "%sx%s" % (FEED_HEADER_SIZE['event'][0], FEED_HEADER_SIZE['event'][1]),
         help_text=_("Part of the image to use in the rss-feed"),
         verbose_name=_("Foto uitsnede")
     )
