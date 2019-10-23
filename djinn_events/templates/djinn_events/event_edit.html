@@ -38,26 +38,33 @@
 
 {% ifpermission None request.user "auth.manage_feeds" %}
     <div class="control-group">
-        <h3>{% trans "Weergave op infoscherm(en)" %}</h3>
+        <label class="control-label">{% trans "Weergave op infoscherm(en)" %}</label>
         <br>
         {{ form.publish_for_feed|bootstrap }}
-        <div class="feed_options{% if not form.instance.publish_for_feed %} hide{% endif %}">
+        <div class="feed-options{% if not form.instance.publish_for_feed %} hide{% endif %}">
         {{ form.description_feed|bootstrap }}
 
-        {{ form.use_default_image|bootstrap }}
         {{ form.extra_media }}
         {{ form.image_feed_hidden }}
         {{ form.image_feed|bootstrap }}
+        {% if form.instance.feedimg_too_small %}
+            <p class="warning">{% trans "Opgeslagen afbeelding is te klein. Moet minimaal 1920x500px zijn." %}</p>
+        {% endif %}
         {{ form.image_feed_crop|bootstrap }}
+        {% if form.instance.feedimg_selection_too_small %}
+            <p class="warning">{% trans "Selectie uit de afbeelding is eigenlijk te klein. Moet minimaal 1920x500px zijn." %}</p>
+        {% endif %}
         <script>
             $(document).ready(function() {
                 image_cropping.init();
             });
         </script>
 
+        {{ form.use_default_image|bootstrap }}
+
         <div class="control-group">
             <label class="control-label">{% trans "infoscherm voorbeeld" %}</label>
-            <iframe width="720" height="460" src="{% url 'djinn_contenttypes_share' form.instance.ct_name form.instance.id %}" frameborder=0 name="feed_preview" id="feed_preview_id">
+            <iframe width="600" height="400" src="{% url 'djinn_contenttypes_share' form.instance.ct_name form.instance.id %}" frameborder=0 name="feed_preview" id="feed_preview_id">
             </iframe>
         </div>
 

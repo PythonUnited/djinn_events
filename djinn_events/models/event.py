@@ -30,7 +30,7 @@ class Event(FeedMixin, BaseContent):
         related_name='event_image',
         null=True, blank=True,
         on_delete=models.SET_NULL,
-        help_text=_("Image for the rss-feed")
+        help_text=_("Image for the rss-feed. Minimal width is 1920px, minimal heigt 500px.")
     )
 
     image_feed_crop = ImageRatioField(

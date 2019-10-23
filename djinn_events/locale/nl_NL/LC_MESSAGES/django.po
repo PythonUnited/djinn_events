@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: djinn_events\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-15 11:38+0200\n"
+"POT-Creation-Date: 2019-10-23 18:02+0200\n"
 "PO-Revision-Date: 2014-01-06 11:33+0100\n"
 "Last-Translator:   <j.barkhof@provinciegroningen.nl>\n"
 "Language-Team: LANGUAGE <info@pythonunited.com>\n"
@@ -108,7 +108,7 @@ msgstr ""
 msgid "Save event"
 msgstr "Gebeurtenis opslaan"
 
-#: forms/event.py:107 templates/djinn_events/event_edit.html:83
+#: forms/event.py:107 templates/djinn_events/event_edit.html:90
 msgid "Cancel"
 msgstr "Annuleren"
 
@@ -122,8 +122,8 @@ msgid "Text"
 msgstr "Tekst"
 
 #: models/event.py:33
-msgid "Image for the rss-feed"
-msgstr "Afbeelding voor infoschermen"
+msgid "Image for the rss-feed. Minimal width is 1920px, minimal heigt 500px."
+msgstr ""
 
 #: models/event.py:39
 msgid "Part of the image to use in the rss-feed"
@@ -160,19 +160,29 @@ msgstr "Duurt de hele dag"
 msgid "Weergave op infoscherm(en)"
 msgstr ""
 
-#: templates/djinn_events/event_edit.html:59
+#: templates/djinn_events/event_edit.html:51
+msgid "Opgeslagen afbeelding is te klein. Moet minimaal 1920x500px zijn."
+msgstr ""
+
+#: templates/djinn_events/event_edit.html:55
+msgid ""
+"Selectie uit de afbeelding is eigenlijk te klein. Moet minimaal 1920x500px "
+"zijn."
+msgstr ""
+
+#: templates/djinn_events/event_edit.html:66
 msgid "infoscherm voorbeeld"
 msgstr ""
 
-#: templates/djinn_events/event_edit.html:75
+#: templates/djinn_events/event_edit.html:82
 msgid "Save"
 msgstr "Opslaan"
 
-#: templates/djinn_events/event_edit.html:79
+#: templates/djinn_events/event_edit.html:86
 msgid "Save and edit again"
 msgstr "Opslaan en opnieuw bewerken"
 
-#: templates/djinn_events/event_edit.html:94
+#: templates/djinn_events/event_edit.html:101
 #, python-format
 msgid "Delete this %(object_name)s"
 msgstr "Verwijder dit %(object_name)s"
@@ -218,6 +228,9 @@ msgstr "Klik op \"Voeg toe\" om een vergeet-me-nietje te plaatsen "
 #: templates/djinn_events/snippets/events_viewlet.html:58
 msgid "No events in this group"
 msgstr "Geen vergeet-me-nietjes in deze groep"
+
+#~ msgid "Image for the rss-feed"
+#~ msgstr "Afbeelding voor infoschermen"
 
 #~ msgid "Delete event"
 #~ msgstr "Vergeet-me-nietje verwijderen"

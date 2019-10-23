@@ -109,7 +109,6 @@ class EventForm(DjinnCroppingMixin, BaseContentForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.init_relation_fields()
 
 
     class Meta(BaseContentForm.Meta):
