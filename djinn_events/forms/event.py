@@ -89,7 +89,7 @@ class EventForm(DjinnCroppingMixin, BaseContentForm):
         required=False,
         widget=ImageWidget(
             attrs={
-                'size': 'feed_full',
+                'size': 'upload_widget_feed',
                 'attachment_type': 'djinn_contenttypes.ImgAttachment',
                 }
         )
