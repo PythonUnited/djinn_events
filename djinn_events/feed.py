@@ -70,9 +70,12 @@ class LatestEventsFeed(DjinnFeed):
         return mark_safe(desc)
 
     def item_extra_kwargs(self, item):
+        background_img_url = ""
+        if item.has_feedimg:
+            background_img_url = "%s%s" % (self.http_host, item.feed_bg_img_url)
 
         return {
-            "background_img_url": "%s%s" % (self.http_host, item.feed_bg_img_url),
+            "background_img_url": background_img_url,
             "more_info_class": item.more_info_class,
             "more_info_text": item.more_info_text,
             "more_info_qrcode_url": item.qrcode_img_url(http_host=self.http_host) or '',
