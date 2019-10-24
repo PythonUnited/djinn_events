@@ -43,7 +43,7 @@ class EventViewlet(FeedViewMixin, TemplateView):
 
         pug = self.parentusergroup()
         event_qs = self.get_queryset(Event.objects.filter(
-            parentusergroup_id=pug))
+            parentusergroup_id=pug, is_tmp=False))
 
         if self.kwargs.get('items_with_image', False):
             event_qs = event_qs.filter(image_feed__isnull=False)

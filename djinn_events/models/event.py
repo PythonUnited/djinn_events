@@ -16,8 +16,10 @@ class Event(FeedMixin, BaseContent):
     feed_bg_img_crop_fieldname = 'image_feed_crop'
     # END required by FeedMixin
 
+    create_tmp_object = True
+
     text = models.TextField(_('Text'))
-    start_date = models.DateField(_('Start date'))
+    start_date = models.DateField(_('Start date'), default=datetime.now())
     start_time = models.TimeField(_('Start time'), null=True, blank=True)
     end_date = models.DateField(_('End date'), null=True,
                                 blank=True, default=None)

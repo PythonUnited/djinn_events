@@ -61,11 +61,14 @@
         </script>
 
         {{ form.use_default_image|bootstrap }}
-
         <div class="control-group">
             <label class="control-label">{% trans "infoscherm voorbeeld" %}</label>
-            <iframe width="600" height="400" src="{% url 'djinn_contenttypes_share' form.instance.ct_name form.instance.id %}" frameborder=0 name="feed_preview" id="feed_preview_id">
+            {% if form.instance.id %}
+            <iframe width="600" height="400" src="{% url 'djinn_contenttypes_preview' form.instance.ct_name form.instance.id %}" frameborder=0 name="feed_preview" id="feed_preview_id">
             </iframe>
+            {% else %}
+                <p class="warning">{% trans "nog niet beschikbaar" %}</p>
+            {% endif %}
         </div>
 
         </div>
@@ -74,36 +77,3 @@
 
 {% endblock %}
 
-{% block formcontrols %}
-<div class="btn-group form-actions">
-
-    <button class="btn btn-primary protected save-action" type="submit"
-            value="save" name="action">
-      {% trans "Save" %}
-    </button>
-    <button class="btn btn-primary protected save-action" type="submit"
-            value="saveandedit" name="action">
-      {% trans "Save and edit again" %}
-    </button>
-    <button class="btn protected cancel-action" type="submit"
-          value="cancel" name="action">
-    {% trans "Cancel" %}
-    </button>
-    {% if object %}
-    {% with perm=object|delete_permission_id %}
-    {% ifpermission object request.user perm %}
-    <a class="btn btn-danger delete-action"
-       data-toggle="modal"
-       href="{{ view.delete_url }}"
-       data-target="#MyModal">
-      {% block delete_label %}
-      {% with object_name=view.ct_label %}
-      {% blocktrans %}Delete this {{ object_name }}{% endblocktrans %}
-      {% endwith %}
-      {% endblock %}
-    </a>
-    {% endifpermission %}
-    {% endwith %}
-    {% endif %}
-</div>
-{% endblock %}
