@@ -19,7 +19,7 @@ class Event(FeedMixin, BaseContent):
     create_tmp_object = True
 
     text = models.TextField(_('Text'))
-    start_date = models.DateField(_('Start date'), default=datetime.now())
+    start_date = models.DateField(_('Start date'), default=date.today)
     start_time = models.TimeField(_('Start time'), null=True, blank=True)
     end_date = models.DateField(_('End date'), null=True,
                                 blank=True, default=None)
