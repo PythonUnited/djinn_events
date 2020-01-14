@@ -109,6 +109,9 @@ class EventForm(DjinnCroppingMixin, BaseContentForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.fields['parentusergroup'].help_text = _(
+            u"Voor vergeet-mij-nietjes op de homepage, kies 'Niet aan een groep "
+            u"toevoegen'")
 
 
     class Meta(BaseContentForm.Meta):
