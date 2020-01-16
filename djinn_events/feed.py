@@ -77,7 +77,9 @@ class LatestEventsFeed(DjinnFeed):
         '''
         If start time and end time are empty, the event is a full day
         '''
+        start_date_str = item.start_date.strftime('%-d %B %Y')
         start_time_str = _("De hele dag")
+        end_time_str = ''
         end_date_str = ''
         if item.start_time:
             start_time_str = item.start_time.strftime('%H:%M')
@@ -86,7 +88,6 @@ class LatestEventsFeed(DjinnFeed):
 
         if item.end_date:
             end_date_str = item.end_date.strftime('%-d %B %Y')
-        start_date_str = item.start_date.strftime('%-d %B %Y')
 
         return {
             "background_img_url": background_img_url,
