@@ -4,6 +4,7 @@ from djinn_contenttypes.base_feed import DjinnFeed
 from djinn_contenttypes.models.feed import MoreInfoFeedGenerator
 from djinn_events.views.eventviewlet import EventViewlet
 from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext
 
 
 class EventFeedGenerator(MoreInfoFeedGenerator):
@@ -78,7 +79,7 @@ class LatestEventsFeed(DjinnFeed):
         If start time and end time are empty, the event is a full day
         '''
         start_date_str = item.start_date.strftime('%-d %B %Y')
-        start_time_str = _("De hele dag")
+        start_time_str = gettext("De hele dag")
         end_time_str = ''
         end_date_str = ''
         if item.start_time:
