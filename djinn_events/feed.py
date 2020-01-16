@@ -74,14 +74,28 @@ class LatestEventsFeed(DjinnFeed):
         if item.has_feedimg:
             background_img_url = "%s%s" % (self.http_host, item.feed_bg_img_url)
 
+        '''
+        If start time and end time are empty, the event is a full day
+        '''
+        start_time_str = _("De hele dag")
+        end_date_str = ''
+        if item.start_time:
+            start_time_str = item.start_time.strftime('%H:%M')
+        if item.end_time:
+            end_time_str = item.end_time.strftime('%H:%M')
+
+        if item.end_date:
+            end_date_str = item.end_date.strftime('%-d %B %Y')
+        start_date_str = item.start_date.strftime('%-d %B %Y')
+
         return {
             "background_img_url": background_img_url,
             "more_info_class": item.more_info_class,
             "more_info_text": item.more_info_text,
             "more_info_qrcode_url": item.qrcode_img_url(http_host=self.http_host) or '',
-            "event_start_date": str(item.start_date or ''),
-            "event_start_time": str(item.start_time or ''),
-            "event_end_date": str(item.end_date or ''),
-            "event_end_time": str(item.end_time or ''),
+            "event_start_date": start_date_str,
+            "event_start_time": start_time_str,
+            "event_end_date": end_date_str,
+            "event_end_time": end_time_str,
             "event_location": item.location or ''
         }
