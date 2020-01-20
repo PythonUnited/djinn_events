@@ -1,6 +1,7 @@
 from datetime import datetime, date
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils import formats
+from django.utils.translation import ugettext_lazy as _, gettext
 from image_cropping import ImageRatioField
 from djinn_contenttypes.models import ImgAttachment
 from djinn_contenttypes.models.feed import FeedMixin
@@ -75,6 +76,34 @@ class Event(FeedMixin, BaseContent):
                                     self.end_time)
         else:
             return self.end_date
+
+    '''
+    If start time and end time are empty, the event is a full day
+    '''
+    @property
+    def feed_start_date(self):
+        return formats.date_format(self.start_date, format="j F Y", use_l10n=True)
+
+    @property
+    def feed_start_time(self):
+        start_time_str = gettext("De hele dag")
+        if self.start_time:
+            start_time_str = self.start_time.strftime('%H:%M')
+        return start_time_str
+
+    @property
+    def feed_end_time(self):
+        end_time_str = ''
+        if self.end_time:
+            end_time_str = self.end_time.strftime('%H:%M')
+        return end_time_str
+
+    @property
+    def feed_end_date(self):
+        end_date_str = ''
+        if self.end_date:
+            end_date_str = formats.date_format(self.end_date, format="j F Y", use_l10n=True)
+        return end_date_str
 
     class Meta:
         app_label = 'djinn_events'
