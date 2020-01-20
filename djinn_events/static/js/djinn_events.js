@@ -37,7 +37,16 @@ djinn.events.calc_end_time = function(hourstr) {
 
 
 $(document).ready(function() {
-   
+
+    var startTime = $("#id_start_time").val();
+    var endTime = $("#id_end_time").val();
+    if ((!startTime) && (!endTime)) {
+        $("input[name='djinn_events_full_day']").prop('checked', true);
+        $("#id_start_time").hide();
+        $("#id_end_time").hide();
+    }
+
+
     $(document).on("click", "input[name='djinn_events_full_day']", function(e) {
         $("#id_start_time").toggle();
         $("#id_start_time").val("");        
@@ -75,6 +84,7 @@ $(document).ready(function() {
           $("#id_end_time").val(djinn.events.calc_end_time(startTime));
           $("#id_end_time").removeClass("placeholder");
         }
+        $("#id_end_date").val($("#id_start_date").val());
       });
 
     $(document).on("submit", "body.event.edit form", function(e) {
