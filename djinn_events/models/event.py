@@ -82,13 +82,19 @@ class Event(FeedMixin, BaseContent):
     '''
     @property
     def feed_start_date(self):
-        return formats.date_format(self.start_date, format="j F Y", use_l10n=True)
+        start_date_str = formats.date_format(self.start_date, format="j F Y", use_l10n=True)
+        if self.end_date:
+            start_date_str = "%s - %s" % (start_date_str, self.feed_end_date)
+        return start_date_str
 
     @property
     def feed_start_time(self):
         start_time_str = gettext("De hele dag")
         if self.start_time:
             start_time_str = self.start_time.strftime('%H:%M')
+
+        if self.end_time:
+            start_time_str = "%s tot %s" % (start_time_str, self.feed_end_time)
         return start_time_str
 
     @property
