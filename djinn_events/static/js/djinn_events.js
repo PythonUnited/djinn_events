@@ -40,10 +40,12 @@ $(document).ready(function() {
 
     var startTime = $("#id_start_time").val();
     var endTime = $("#id_end_time").val();
-    if ((!startTime) && (!endTime)) {
-        $("input[name='djinn_events_full_day']").prop('checked', true);
-        $("#id_start_time").hide();
-        $("#id_end_time").hide();
+    if ( ! $("body").hasClass("add")) {
+        if ((!startTime) && (!endTime)) {
+            $("input[name='djinn_events_full_day']").prop('checked', true);
+            $("#id_start_time").hide();
+            $("#id_end_time").hide();
+        }
     }
 
 
