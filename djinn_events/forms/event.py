@@ -1,6 +1,7 @@
 from urllib.parse import unquote_plus
 from django import forms
 from djinn_contenttypes.forms.crop import DjinnCroppingMixin
+from djinn_contenttypes.models.feed import DESCR_FEED_MAX_LENGTH
 from djinn_forms.fields.image import ImageField
 from django.utils.translation import ugettext_lazy as _
 from djinn_contenttypes.models import ImgAttachment
@@ -112,6 +113,8 @@ class EventForm(DjinnCroppingMixin, BaseContentForm):
         self.fields['parentusergroup'].help_text = _(
             u"Voor vergeet-mij-nietjes op de homepage, kies 'Niet aan een groep "
             u"toevoegen'")
+        self.fields['description_feed'].widget.attrs.update(
+            {'data-maxchars': DESCR_FEED_MAX_LENGTH, 'class': 'full count_characters high'})
 
 
     class Meta(BaseContentForm.Meta):
