@@ -52,7 +52,7 @@ class LatestEventsFeed(DjinnFeed):
             'items_with_image': self.items_with_image,
         }
 
-        eventlist = eventviewlet.events()
+        eventlist = eventviewlet.events(limit=6)
         return eventlist
 
     def item_title(self, item):
