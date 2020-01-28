@@ -83,7 +83,7 @@ class Event(FeedMixin, BaseContent):
     @property
     def feed_start_date(self):
         start_date_str = formats.date_format(self.start_date, format="j F Y", use_l10n=True)
-        if self.end_date:
+        if self.end_date and self.end_date > self.start_date:
             start_date_str = "%s - %s" % (start_date_str, self.feed_end_date)
         return start_date_str
 
