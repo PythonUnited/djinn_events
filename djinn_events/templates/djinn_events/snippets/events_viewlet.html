@@ -4,8 +4,11 @@
   
   <header>
     <h1>{% if view.parentusergroup %}{% trans "Events in this group" %}{% else %}{% trans "Events" %}{% endif %}
-
-      {% ifpermission "" request.user 'djinn_events.add_event' %}
+    {% comment %}
+    view.groupprofile is the instance, view.parentusergroup is the groupprofile.id
+    {% endcomment %}
+    {% with view.groupprofile as permission_object %}
+      {% ifpermission permission_object|default:"" request.user 'djinn_events.add_event' %}
       <span class="controls">
         <a href="{% if view.parentusergroup %}{% url 'djinn_events_add_event' view.parentusergroup %}{% else %}{% url 'djinn_events_add_event' %}{% endif %}"
            data-toggle="tooltip"
@@ -21,16 +24,7 @@
         </div>
       </span>
       {% endifpermission %}
-      {% ifpermission view.groupprofile request.user 'contenttypes.add_contenttype' %}
-      <span class="controls">
-        <a href="{% if view.parentusergroup %}{% url 'djinn_events_add_event' view.parentusergroup %}{% else %}{% url 'djinn_events_add_event' %}{% endif %}"
-           data-toggle="tooltip"
-           title="{% trans 'Add event' %}"
-           >
-          <i class="icon-plus"></i>
-        </a>
-      </span>
-      {% endifpermission %}
+    {% endwith %}
 
     </h1>
   </header>
