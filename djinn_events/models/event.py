@@ -50,7 +50,8 @@ class Event(FeedMixin, BaseContent):
     @property
     def is_published(self):
 
-        return super(Event, self).is_published and \
+        # return super(Event, self).is_published and \
+        return super(Event, self).is_public and \
             (not self.end_date or (self.end_date < date.today()))
 
     @property
