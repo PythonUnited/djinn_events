@@ -1,13 +1,12 @@
 from datetime import date
 from django.views.generic import TemplateView
-
-from djinn_contenttypes.views.base import FeedViewMixin
+from djinn_contenttypes.views.base import FeedViewMixin, DesignVersionMixin
 from djinn_events.models.event import Event
 from djinn_events.settings import SHOW_N_EVENTS
 from pgprofile.models import GroupProfile
 
 
-class EventViewlet(FeedViewMixin, TemplateView):
+class EventViewlet(DesignVersionMixin, FeedViewMixin, TemplateView):
 
     template_name = "djinn_events/snippets/events_viewlet.html"
 
