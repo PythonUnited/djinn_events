@@ -182,12 +182,12 @@ msgstr ""
 #: templates/djinn_events/snippets/event.html:10
 #: templates/djinn_events/snippets/event.html:14
 msgid "MONTH_DAY_TIME_FORMAT"
-msgstr ""
+msgstr "j F Y H:i"
 
 #: templates/djinn_events/snippets/event.html:11
 #: templates/djinn_events/snippets/event.html:14
 msgid "MONTH_DAY_FORMAT"
-msgstr ""
+msgstr "j F Y"
 
 #: templates/djinn_events/snippets/event_detail_block.html:6
 msgid "When?"
