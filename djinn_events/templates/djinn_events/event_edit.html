@@ -36,6 +36,8 @@
 
 {{ form.parentusergroup|bootstrap }}
 
+{{ form.owner|bootstrap }}
+
 {% ifpermission None request.user "auth.manage_feeds" %}
     <div class="control-group">
         <label class="control-label">{% trans "Weergave op infoscherm(en)" %}</label>
