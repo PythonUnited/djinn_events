@@ -1,15 +1,18 @@
 from urllib.parse import unquote_plus
 from django import forms
+from django.conf import settings
+
 from djinn_contenttypes.forms.crop import DjinnCroppingMixin
 from djinn_contenttypes.models.feed import DESCR_FEED_MAX_LENGTH
 from djinn_forms.fields.image import ImageField
 from django.utils.translation import ugettext_lazy as _
 from djinn_contenttypes.models import ImgAttachment
+from djinn_forms.widgets.attachment import AttachmentWidget
 from djinn_forms.widgets.image import ImageWidget
 from djinn_forms.widgets.link import LinkWidget
 from djinn_events.models.event import Event
 from djinn_contenttypes.forms.base import BaseContentForm
-from djinn_events import settings
+from djinn_events import settings as events_settings
 
 
 class EventForm(DjinnCroppingMixin, BaseContentForm):
@@ -23,7 +26,7 @@ class EventForm(DjinnCroppingMixin, BaseContentForm):
         label=_("Start date"),
         widget=forms.DateInput(
             attrs={'class': 'date', "placeholder": _("Date")},
-            format=settings.DEFAULT_DATE_INPUT_FORMAT
+            format=events_settings.DEFAULT_DATE_INPUT_FORMAT
         ))
 
     start_time = forms.TimeField(
@@ -38,7 +41,7 @@ class EventForm(DjinnCroppingMixin, BaseContentForm):
         required=False,
         widget=forms.DateInput(
             attrs={'class': 'date', "placeholder": _("Date")},
-            format=settings.DEFAULT_DATE_INPUT_FORMAT
+            format=events_settings.DEFAULT_DATE_INPUT_FORMAT
         ))
 
     end_time = forms.TimeField(
@@ -95,6 +98,19 @@ class EventForm(DjinnCroppingMixin, BaseContentForm):
                 }
         )
     )
+    # Zo zou de widget gelijk zijn aan image toevoegen aan timelinebericht
+    # image_feed = forms.ModelChoiceField(
+    #     queryset=ImgAttachment.objects.all(),
+    #     # Translators: Homepage rss-feed image label
+    #     label=_("Add rss-feed image"),
+    #     required=False,
+    #     widget = AttachmentWidget(
+    #         ImgAttachment,
+    #         "gronet_v3/djinn_forms/snippets/imageattachmentwidget.html",
+    #         attrs={"multiple": False, "show_progress": True,
+    #                'inline_edit_enabled': settings.INLINE_EDIT_ENABLED}
+    #     )
+    # )
 
     def clean_link(self):
 
